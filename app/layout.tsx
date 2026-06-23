@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import { AuthButton } from "./auth-button";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -34,13 +35,17 @@ export default function RootLayout({
             <Link href="/" className="font-semibold text-zinc-900 dark:text-zinc-50">
               Insurance Exam Prep
             </Link>
-            <div className="flex gap-6 text-sm font-medium text-zinc-600 dark:text-zinc-400">
+            <div className="flex items-center gap-6 text-sm font-medium text-zinc-600 dark:text-zinc-400">
               <Link href="/study" className="hover:text-zinc-900 dark:hover:text-zinc-50">
                 Study Plan
               </Link>
               <Link href="/quiz" className="hover:text-zinc-900 dark:hover:text-zinc-50">
                 Quizzes
               </Link>
+              <Link href="/schedule" className="hover:text-zinc-900 dark:hover:text-zinc-50">
+                My Schedule
+              </Link>
+              <AuthButton />
             </div>
           </nav>
         </header>
