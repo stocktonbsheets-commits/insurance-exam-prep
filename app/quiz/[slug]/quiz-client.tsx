@@ -1,13 +1,39 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Question } from "@/lib/questions";
 
-export function Quiz({ questions }: { questions: Question[] }) {
+type StoredResult = {
+  answers: (number | null)[];
+  score: number;
+};
+
+function storageKey(slug: string) {
+  return `quiz-result:${slug}`;
+}
+
+export function Quiz({ slug, questions }: { slug: string; questions: Question[] }) {
   const [answers, setAnswers] = useState<(number | null)[]>(
     questions.map(() => null)
   );
   const [submitted, setSubmitted] = useState(false);
+  const [locked, setLocked] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    const raw = window.localStorage.getItem(storageKey(slug));
+    if (raw) {
+      try {
+        const stored: StoredResult = JSON.parse(raw);
+        setAnswers(stored.answers);
+        setSubmitted(true);
+        setLocked(true);
+      } catch {
+        // ignore malformed stored data
+      }
+    }
+    setHydrated(true);
+  }, [slug]);
 
   const score = answers.reduce(
     (total: number, answer, i) =>
@@ -24,8 +50,28 @@ export function Quiz({ questions }: { questions: Question[] }) {
     });
   }
 
+  function submit() {
+    setSubmitted(true);
+    setLocked(true);
+    window.localStorage.setItem(
+      storageKey(slug),
+      JSON.stringify({ answers, score })
+    );
+  }
+
+  if (!hydrated) {
+    return null;
+  }
+
   return (
     <div className="mt-8 flex flex-col gap-8">
+      {locked && (
+        <div className="rounded-lg border border-amber-400 bg-amber-50 p-4 text-sm text-amber-800 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200">
+          You&apos;ve already taken this quiz. Here are your submitted answers
+          and score.
+        </div>
+      )}
+
       {questions.map((q, qi) => (
         <div
           key={qi}
@@ -45,6 +91,7 @@ export function Quiz({ questions }: { questions: Question[] }) {
                 <button
                   key={oi}
                   onClick={() => selectAnswer(qi, oi)}
+                  disabled={submitted}
                   className={[
                     "rounded-md border px-3 py-2 text-left text-sm transition-colors",
                     isCorrect
@@ -54,6 +101,7 @@ export function Quiz({ questions }: { questions: Question[] }) {
                       : isSelected
                       ? "border-zinc-900 dark:border-zinc-50"
                       : "border-black/[.08] dark:border-white/[.145]",
+                    submitted ? "cursor-default" : "",
                   ].join(" ")}
                 >
                   {option}
@@ -66,7 +114,7 @@ export function Quiz({ questions }: { questions: Question[] }) {
 
       {!submitted ? (
         <button
-          onClick={() => setSubmitted(true)}
+          onClick={submit}
           disabled={answers.some((a) => a === null)}
           className="h-12 rounded-full bg-foreground px-6 font-medium text-background transition-colors hover:bg-[#383838] disabled:opacity-40 dark:hover:bg-[#ccc]"
         >
