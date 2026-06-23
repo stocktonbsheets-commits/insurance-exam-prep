@@ -1,46 +1,30 @@
 import Link from "next/link";
-import { auth, signIn } from "@/lib/auth";
+import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { modules } from "@/lib/content";
 import { createStudyPlan } from "./actions";
 import { CompleteToggle } from "./complete-toggle";
-
-const STUDY_DAYS = [
-  { key: "mon", label: "Mon" },
-  { key: "tue", label: "Tue" },
-  { key: "wed", label: "Wed" },
-  { key: "thu", label: "Thu" },
-  { key: "fri", label: "Fri" },
-  { key: "sat", label: "Sat" },
-  { key: "sun", label: "Sun" },
-];
+import { GuestSchedule } from "./guest-schedule";
+import { STUDY_DAYS } from "@/lib/schedule";
 
 export default async function SchedulePage() {
   const session = await auth();
 
   if (!session?.user) {
     return (
-      <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-16 text-center">
+      <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-16">
         <h1 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
           My Study Schedule
         </h1>
         <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-          Sign in to build a personalized schedule based on your exam date.
+          Build a schedule right now as a guest — it&apos;s saved in this
+          browser only.{" "}
+          <Link href="/signup" className="font-medium text-zinc-900 hover:underline dark:text-zinc-50">
+            Create an account
+          </Link>{" "}
+          to save it permanently and access it from any device.
         </p>
-        <form
-          action={async () => {
-            "use server";
-            await signIn("github");
-          }}
-          className="mt-6"
-        >
-          <button
-            type="submit"
-            className="h-12 rounded-full bg-foreground px-6 font-medium text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc]"
-          >
-            Sign in with GitHub
-          </button>
-        </form>
+        <GuestSchedule />
       </main>
     );
   }

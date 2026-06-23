@@ -31,19 +31,33 @@ export default async function ModulePage({
       </h1>
       <p className="mt-2 text-zinc-600 dark:text-zinc-400">{module.summary}</p>
 
+      <a
+        href={`https://www.youtube.com/results?search_query=${encodeURIComponent(module.videoSearch)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-zinc-600 hover:underline dark:text-zinc-400"
+      >
+        ▶ Watch videos on this topic
+      </a>
+
       <h2 className="mt-8 text-lg font-semibold text-zinc-900 dark:text-zinc-50">
         Key Concepts
       </h2>
-      <ul className="mt-4 flex flex-col gap-4">
-        {module.points.map((point, i) => (
-          <li
+      <div className="mt-4 flex flex-col gap-4">
+        {module.concepts.map((concept, i) => (
+          <div
             key={i}
-            className="rounded-lg border border-black/[.08] p-4 text-zinc-800 dark:border-white/[.145] dark:text-zinc-200"
+            className="rounded-lg border border-black/[.08] p-4 dark:border-white/[.145]"
           >
-            {point}
-          </li>
+            <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
+              {concept.title}
+            </h3>
+            <p className="mt-2 text-zinc-700 dark:text-zinc-300">
+              {concept.explanation}
+            </p>
+          </div>
         ))}
-      </ul>
+      </div>
 
       <h2 className="mt-10 text-lg font-semibold text-zinc-900 dark:text-zinc-50">
         Watch Out For This on the Exam

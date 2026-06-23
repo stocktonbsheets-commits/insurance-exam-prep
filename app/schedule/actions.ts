@@ -2,35 +2,8 @@
 
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { modules } from "@/lib/content";
+import { buildModuleSchedule } from "@/lib/schedule";
 import { revalidatePath } from "next/cache";
-
-const WEEKDAY_INDEX: Record<string, number> = {
-  sun: 0,
-  mon: 1,
-  tue: 2,
-  wed: 3,
-  thu: 4,
-  fri: 5,
-  sat: 6,
-};
-
-function buildScheduleDates(examDate: Date, studyDays: string[]): Date[] {
-  const allowedIndexes = new Set(studyDays.map((d) => WEEKDAY_INDEX[d]));
-  const dates: Date[] = [];
-  const cursor = new Date();
-  cursor.setHours(0, 0, 0, 0);
-  cursor.setDate(cursor.getDate() + 1);
-
-  while (cursor < examDate && dates.length < 60) {
-    if (allowedIndexes.has(cursor.getDay())) {
-      dates.push(new Date(cursor));
-    }
-    cursor.setDate(cursor.getDate() + 1);
-  }
-
-  return dates;
-}
 
 export async function createStudyPlan(formData: FormData) {
   const session = await auth();
@@ -46,19 +19,10 @@ export async function createStudyPlan(formData: FormData) {
   }
 
   const examDate = new Date(examDateRaw);
-  const dates = buildScheduleDates(examDate, studyDays);
-
-  const moduleSlugs = modules.map((m) => m.slug);
-  const scheduleEntries = moduleSlugs.map((slug, i) => {
-    const dateIndex =
-      dates.length === 0
-        ? 0
-        : Math.min(
-            dates.length - 1,
-            Math.floor((i * dates.length) / moduleSlugs.length)
-          );
-    return { moduleSlug: slug, scheduledOn: dates[dateIndex] ?? examDate };
-  });
+  const scheduleEntries = buildModuleSchedule(examDate, studyDays).map((s) => ({
+    moduleSlug: s.moduleSlug,
+    scheduledOn: new Date(s.scheduledOn),
+  }));
 
   await prisma.studyPlan.upsert({
     where: { userId: session.user.id },

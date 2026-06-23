@@ -1,23 +1,17 @@
-import { auth, signIn, signOut } from "@/lib/auth";
+import Link from "next/link";
+import { auth, signOut } from "@/lib/auth";
 
 export async function AuthButton() {
   const session = await auth();
 
   if (!session?.user) {
     return (
-      <form
-        action={async () => {
-          "use server";
-          await signIn("github");
-        }}
+      <Link
+        href="/signin"
+        className="rounded-full border border-black/[.08] px-4 py-1.5 text-sm font-medium transition-colors hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-white/[.06]"
       >
-        <button
-          type="submit"
-          className="rounded-full border border-black/[.08] px-4 py-1.5 text-sm font-medium transition-colors hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-white/[.06]"
-        >
-          Sign in
-        </button>
-      </form>
+        Sign in
+      </Link>
     );
   }
 
