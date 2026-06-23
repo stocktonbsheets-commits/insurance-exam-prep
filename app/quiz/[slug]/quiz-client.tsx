@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 import type { Question } from "@/lib/questions";
+import { shuffle } from "@/lib/shuffle";
 
 type StoredResult = {
+  questions: Question[];
   answers: (number | null)[];
   score: number;
 };
@@ -12,10 +14,30 @@ function storageKey(slug: string) {
   return `quiz-result:${slug}`;
 }
 
-export function Quiz({ slug, questions }: { slug: string; questions: Question[] }) {
-  const [answers, setAnswers] = useState<(number | null)[]>(
-    questions.map(() => null)
-  );
+function randomizeQuestions(questions: Question[], count: number): Question[] {
+  return shuffle(questions)
+    .slice(0, count)
+    .map((q) => {
+      const optionOrder = shuffle(q.options.map((_, i) => i));
+      return {
+        question: q.question,
+        options: optionOrder.map((i) => q.options[i]),
+        correctIndex: optionOrder.indexOf(q.correctIndex),
+      };
+    });
+}
+
+export function Quiz({
+  slug,
+  questions,
+  questionCount,
+}: {
+  slug: string;
+  questions: Question[];
+  questionCount?: number;
+}) {
+  const [displayQuestions, setDisplayQuestions] = useState<Question[]>([]);
+  const [answers, setAnswers] = useState<(number | null)[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [locked, setLocked] = useState(false);
   const [hydrated, setHydrated] = useState(false);
@@ -25,19 +47,26 @@ export function Quiz({ slug, questions }: { slug: string; questions: Question[] 
     if (raw) {
       try {
         const stored: StoredResult = JSON.parse(raw);
+        setDisplayQuestions(stored.questions);
         setAnswers(stored.answers);
         setSubmitted(true);
         setLocked(true);
+        setHydrated(true);
+        return;
       } catch {
-        // ignore malformed stored data
+        // ignore malformed stored data, fall through to a fresh quiz
       }
     }
+    const randomized = randomizeQuestions(questions, questionCount ?? questions.length);
+    setDisplayQuestions(randomized);
+    setAnswers(randomized.map(() => null));
     setHydrated(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
 
   const score = answers.reduce(
     (total: number, answer, i) =>
-      total + (answer === questions[i].correctIndex ? 1 : 0),
+      total + (answer === displayQuestions[i]?.correctIndex ? 1 : 0),
     0
   );
 
@@ -55,7 +84,7 @@ export function Quiz({ slug, questions }: { slug: string; questions: Question[] 
     setLocked(true);
     window.localStorage.setItem(
       storageKey(slug),
-      JSON.stringify({ answers, score })
+      JSON.stringify({ questions: displayQuestions, answers, score })
     );
   }
 
@@ -72,7 +101,7 @@ export function Quiz({ slug, questions }: { slug: string; questions: Question[] 
         </div>
       )}
 
-      {questions.map((q, qi) => (
+      {displayQuestions.map((q, qi) => (
         <div
           key={qi}
           className="rounded-lg border border-black/[.08] p-4 dark:border-white/[.145]"
@@ -123,7 +152,7 @@ export function Quiz({ slug, questions }: { slug: string; questions: Question[] 
       ) : (
         <div className="rounded-lg border border-black/[.08] p-4 text-center dark:border-white/[.145]">
           <p className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            You scored {score} / {questions.length}
+            You scored {score} / {displayQuestions.length}
           </p>
         </div>
       )}

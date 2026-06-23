@@ -18,6 +18,17 @@ export default function QuizIndexPage() {
             {trackLabel}
           </h2>
           <ul className="mt-4 flex flex-col gap-3">
+            <li>
+              <Link
+                href={`/quiz/mixed/${trackKey}`}
+                className="flex items-center justify-between rounded-lg border border-zinc-900 p-4 transition-colors hover:bg-black/[.03] dark:border-zinc-50 dark:hover:bg-white/[.06]"
+              >
+                <span className="font-medium text-zinc-900 dark:text-zinc-50">
+                  Mixed Quiz (all topics)
+                </span>
+                <span className="text-sm text-zinc-500">10 random questions</span>
+              </Link>
+            </li>
             {modules
               .filter((m) => m.track === trackKey)
               .map((m) => (
@@ -30,7 +41,7 @@ export default function QuizIndexPage() {
                       {m.title}
                     </span>
                     <span className="text-sm text-zinc-500">
-                      {questionsBySlug[m.slug]?.length ?? 0} questions
+                      {questionsBySlug[m.slug]?.length ?? 0} questions, shuffled
                     </span>
                   </Link>
                 </li>
