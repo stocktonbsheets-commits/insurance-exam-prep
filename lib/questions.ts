@@ -387,6 +387,239 @@ export const questionsBySlug: Record<string, Question[]> = {
       correctIndex: 1,
     },
   ],
+  "lh-annuities": [
+    {
+      question: "During which phase of an annuity does money grow tax-deferred?",
+      options: ["Annuitization phase", "Accumulation phase", "Free look phase", "Probate phase"],
+      correctIndex: 1,
+    },
+    {
+      question: "A fixed annuity differs from a variable annuity because it:",
+      options: [
+        "Guarantees a set rate of return",
+        "Has returns tied to investment performance",
+        "Pays a death benefit like life insurance",
+        "Has no surrender period",
+      ],
+      correctIndex: 0,
+    },
+    {
+      question: "A life annuity payout option that continues payments to a second person after the annuitant dies is called:",
+      options: ["Straight life", "Life with period certain", "Joint and survivor", "Lump sum"],
+      correctIndex: 2,
+    },
+    {
+      question: "Cashing out an annuity early, within the surrender period, typically results in:",
+      options: ["A bonus payment", "A surrender charge", "An automatic tax refund", "No consequence"],
+      correctIndex: 1,
+    },
+    {
+      question: "An immediate annuity is best described as one that:",
+      options: [
+        "Accumulates for decades before paying out",
+        "Begins payouts shortly after a lump-sum purchase",
+        "Only pays a death benefit",
+        "Is only available to businesses",
+      ],
+      correctIndex: 1,
+    },
+    {
+      question: "A nonqualified annuity is funded with:",
+      options: ["Pre-tax dollars only", "After-tax dollars", "Employer stock", "Government bonds only"],
+      correctIndex: 1,
+    },
+    {
+      question: "The main purpose of an annuity is to:",
+      options: [
+        "Protect against premature death",
+        "Provide a stream of income, often for retirement",
+        "Cover medical expenses",
+        "Replace homeowners insurance",
+      ],
+      correctIndex: 1,
+    },
+    {
+      question: "A deferred annuity, compared to an immediate annuity:",
+      options: [
+        "Pays out immediately after purchase",
+        "Accumulates funds before payments begin later",
+        "Cannot be variable",
+        "Has no accumulation phase",
+      ],
+      correctIndex: 1,
+    },
+  ],
+  "lh-medicare-ltc": [
+    {
+      question: "Which part of Medicare covers hospital costs?",
+      options: ["Part A", "Part B", "Part C", "Part D"],
+      correctIndex: 0,
+    },
+    {
+      question: "Which part of Medicare covers outpatient/medical costs?",
+      options: ["Part A", "Part B", "Part C", "Part D"],
+      correctIndex: 1,
+    },
+    {
+      question: "Medicare Advantage is also known as:",
+      options: ["Part A", "Part B", "Part C", "Medigap"],
+      correctIndex: 2,
+    },
+    {
+      question: "Which part of Medicare covers prescription drugs?",
+      options: ["Part A", "Part B", "Part C", "Part D"],
+      correctIndex: 3,
+    },
+    {
+      question: "Medigap policies are designed to:",
+      options: [
+        "Replace Original Medicare entirely",
+        "Help cover gaps like deductibles and coinsurance under Original Medicare",
+        "Cover only prescription drugs",
+        "Provide long-term care benefits",
+      ],
+      correctIndex: 1,
+    },
+    {
+      question: "Eligibility for Medicaid is primarily based on:",
+      options: ["Age 65+", "Financial need", "Employer sponsorship", "Veteran status"],
+      correctIndex: 1,
+    },
+    {
+      question: "Long-term care insurance benefits are typically triggered when the insured:",
+      options: [
+        "Turns 65",
+        "Can't perform a set number of Activities of Daily Living",
+        "Retires from work",
+        "Files for Medicare",
+      ],
+      correctIndex: 1,
+    },
+    {
+      question: "Why do people buy separate long-term care insurance?",
+      options: [
+        "Medicare fully covers custodial care",
+        "Medicare generally does not cover long-term custodial care",
+        "It's required by federal law",
+        "It replaces Medicare Part A",
+      ],
+      correctIndex: 1,
+    },
+  ],
+  "pc-commercial-liability": [
+    {
+      question: "A Commercial General Liability (CGL) policy primarily covers:",
+      options: [
+        "A business's own property damage",
+        "A business's liability for bodily injury and property damage to third parties",
+        "Employee health benefits",
+        "Company vehicles only",
+      ],
+      correctIndex: 1,
+    },
+    {
+      question: "A Businessowners Policy (BOP) is designed for:",
+      options: [
+        "Only Fortune 500 companies",
+        "Bundling property and liability coverage for small/medium businesses",
+        "Personal auto coverage",
+        "Workers' compensation only",
+      ],
+      correctIndex: 1,
+    },
+    {
+      question: "Business income coverage is meant to:",
+      options: [
+        "Pay for inventory damage only",
+        "Replace lost income and continuing expenses while a business is shut down by a covered loss",
+        "Cover employee salaries forever",
+        "Pay off business loans",
+      ],
+      correctIndex: 1,
+    },
+    {
+      question: "Products-completed operations coverage addresses liability arising from:",
+      options: [
+        "Products or work performed after completion",
+        "Employee injuries on the job",
+        "Company vehicle accidents",
+        "Cyberattacks",
+      ],
+      correctIndex: 0,
+    },
+    {
+      question: "An additional insured endorsement does what?",
+      options: [
+        "Removes coverage for the named insured",
+        "Extends liability coverage to parties beyond the named insured",
+        "Cancels the policy",
+        "Adds flood coverage",
+      ],
+      correctIndex: 1,
+    },
+    {
+      question: "A claims-made liability policy covers claims based on:",
+      options: [
+        "When the incident occurred, regardless of when reported",
+        "When the claim is made during the policy period",
+        "Only claims filed after the policy expires",
+        "Only claims from named employees",
+      ],
+      correctIndex: 1,
+    },
+    {
+      question: "An occurrence policy, unlike a claims-made policy, covers:",
+      options: [
+        "Only claims reported during the same year",
+        "Incidents that happened during the policy period, regardless of when the claim is filed",
+        "Nothing after cancellation",
+        "Only product liability",
+      ],
+      correctIndex: 1,
+    },
+  ],
+  "pc-bonds": [
+    {
+      question: "In a surety bond, who must perform the underlying obligation?",
+      options: ["The obligee", "The surety", "The principal", "The insurer's agent"],
+      correctIndex: 2,
+    },
+    {
+      question: "In a surety bond, who is protected if the principal fails to perform?",
+      options: ["The principal", "The surety", "The obligee", "The bonding company's shareholders"],
+      correctIndex: 2,
+    },
+    {
+      question: "Unlike standard insurance, a surety bond requires the principal to:",
+      options: [
+        "Pay nothing ever",
+        "Reimburse the surety if a claim is paid",
+        "Be the only party covered",
+        "Skip underwriting",
+      ],
+      correctIndex: 1,
+    },
+    {
+      question: "A fidelity bond protects an employer against:",
+      options: ["Weather damage", "Employee dishonesty such as theft or embezzlement", "Customer lawsuits", "Equipment breakdown"],
+      correctIndex: 1,
+    },
+    {
+      question: "A license and permit bond guarantees that a business will:",
+      options: [
+        "Make a profit",
+        "Comply with laws/regulations tied to its license",
+        "Never be sued",
+        "Pay no taxes",
+      ],
+      correctIndex: 1,
+    },
+    {
+      question: "Which type of bond guarantees a contractor will fulfill a construction contract?",
+      options: ["Fidelity bond", "License bond", "Contract (performance) bond", "Title bond"],
+      correctIndex: 2,
+    },
+  ],
   "pc-regulation": [
     {
       question: "Inducing a client to replace a policy through misrepresentation is known as:",

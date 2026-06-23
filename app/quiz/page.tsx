@@ -26,7 +26,7 @@ export default function QuizIndexPage() {
                 <span className="font-medium text-zinc-900 dark:text-zinc-50">
                   Mixed Quiz (all topics)
                 </span>
-                <span className="text-sm text-zinc-500">10 random questions</span>
+                <span className="text-sm text-zinc-500">12 random questions</span>
               </Link>
             </li>
             {modules

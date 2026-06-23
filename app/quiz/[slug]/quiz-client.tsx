@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import type { Question } from "@/lib/questions";
 import { shuffle } from "@/lib/shuffle";
 
-type StoredResult = {
-  questions: Question[];
-  answers: (number | null)[];
-  score: number;
+type StoredHistory = {
+  lastScore: number;
+  lastTotal: number;
+  attempts: number;
 };
 
 function storageKey(slug: string) {
-  return `quiz-result:${slug}`;
+  return `quiz-history:${slug}`;
 }
 
 function randomizeQuestions(questions: Question[], count: number): Question[] {
@@ -27,6 +27,11 @@ function randomizeQuestions(questions: Question[], count: number): Question[] {
     });
 }
 
+function freshQuiz(questions: Question[], count: number) {
+  const randomized = randomizeQuestions(questions, count);
+  return { displayQuestions: randomized, answers: randomized.map(() => null) };
+}
+
 export function Quiz({
   slug,
   questions,
@@ -36,30 +41,25 @@ export function Quiz({
   questions: Question[];
   questionCount?: number;
 }) {
+  const count = Math.min(questionCount ?? 8, questions.length);
   const [displayQuestions, setDisplayQuestions] = useState<Question[]>([]);
   const [answers, setAnswers] = useState<(number | null)[]>([]);
   const [submitted, setSubmitted] = useState(false);
-  const [locked, setLocked] = useState(false);
+  const [history, setHistory] = useState<StoredHistory | null>(null);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
     const raw = window.localStorage.getItem(storageKey(slug));
     if (raw) {
       try {
-        const stored: StoredResult = JSON.parse(raw);
-        setDisplayQuestions(stored.questions);
-        setAnswers(stored.answers);
-        setSubmitted(true);
-        setLocked(true);
-        setHydrated(true);
-        return;
+        setHistory(JSON.parse(raw));
       } catch {
-        // ignore malformed stored data, fall through to a fresh quiz
+        // ignore malformed stored data
       }
     }
-    const randomized = randomizeQuestions(questions, questionCount ?? questions.length);
-    setDisplayQuestions(randomized);
-    setAnswers(randomized.map(() => null));
+    const { displayQuestions, answers } = freshQuiz(questions, count);
+    setDisplayQuestions(displayQuestions);
+    setAnswers(answers);
     setHydrated(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug]);
@@ -81,11 +81,20 @@ export function Quiz({
 
   function submit() {
     setSubmitted(true);
-    setLocked(true);
-    window.localStorage.setItem(
-      storageKey(slug),
-      JSON.stringify({ questions: displayQuestions, answers, score })
-    );
+    const updated: StoredHistory = {
+      lastScore: score,
+      lastTotal: displayQuestions.length,
+      attempts: (history?.attempts ?? 0) + 1,
+    };
+    setHistory(updated);
+    window.localStorage.setItem(storageKey(slug), JSON.stringify(updated));
+  }
+
+  function retake() {
+    const next = freshQuiz(questions, count);
+    setDisplayQuestions(next.displayQuestions);
+    setAnswers(next.answers);
+    setSubmitted(false);
   }
 
   if (!hydrated) {
@@ -94,10 +103,11 @@ export function Quiz({
 
   return (
     <div className="mt-8 flex flex-col gap-8">
-      {locked && (
-        <div className="rounded-lg border border-amber-400 bg-amber-50 p-4 text-sm text-amber-800 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-200">
-          You&apos;ve already taken this quiz. Here are your submitted answers
-          and score.
+      {history && !submitted && (
+        <div className="rounded-lg border border-black/[.08] p-4 text-sm text-zinc-600 dark:border-white/[.145] dark:text-zinc-400">
+          Last attempt: {history.lastScore} / {history.lastTotal} ({history.attempts}{" "}
+          attempt{history.attempts === 1 ? "" : "s"} so far). This is a fresh set of
+          questions in a new order.
         </div>
       )}
 
@@ -150,10 +160,16 @@ export function Quiz({
           Submit Answers
         </button>
       ) : (
-        <div className="rounded-lg border border-black/[.08] p-4 text-center dark:border-white/[.145]">
+        <div className="flex flex-col items-center gap-4 rounded-lg border border-black/[.08] p-4 text-center dark:border-white/[.145]">
           <p className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
             You scored {score} / {displayQuestions.length}
           </p>
+          <button
+            onClick={retake}
+            className="h-12 rounded-full bg-foreground px-6 font-medium text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc]"
+          >
+            Retake with New Questions
+          </button>
         </div>
       )}
     </div>

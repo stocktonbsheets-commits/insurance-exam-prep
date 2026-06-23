@@ -32,9 +32,10 @@ export default async function MixedQuizPage({
         {tracks[trackKey]} Mixed Quiz
       </h1>
       <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-        10 random questions pulled from every topic in this track.
+        12 random questions pulled from every topic in this track, in a fresh
+        mix every time you take it.
       </p>
-      <Quiz slug={`mixed-${trackKey}`} questions={allQuestions} questionCount={10} />
+      <Quiz slug={`mixed-${trackKey}`} questions={allQuestions} questionCount={12} />
     </main>
   );
 }
