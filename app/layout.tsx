@@ -42,6 +42,9 @@ export default function RootLayout({
               <Link href="/quiz" className="hover:text-zinc-900 dark:hover:text-zinc-50">
                 Quizzes
               </Link>
+              <Link href="/exam" className="hover:text-zinc-900 dark:hover:text-zinc-50">
+                Practice Exam
+              </Link>
               <Link href="/schedule" className="hover:text-zinc-900 dark:hover:text-zinc-50">
                 My Schedule
               </Link>

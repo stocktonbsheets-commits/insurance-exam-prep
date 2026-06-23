@@ -54,6 +54,18 @@ export function GuestSchedule() {
     });
   }
 
+  function reschedule(moduleSlug: string, scheduledOn: string) {
+    if (!plan) return;
+    save({
+      ...plan,
+      schedule: plan.schedule.map((s) =>
+        s.moduleSlug === moduleSlug
+          ? { ...s, scheduledOn: new Date(scheduledOn).toISOString() }
+          : s
+      ),
+    });
+  }
+
   if (!hydrated) {
     return null;
   }
@@ -122,29 +134,28 @@ export function GuestSchedule() {
           return (
             <li
               key={s.moduleSlug}
-              className="flex items-center gap-4 rounded-lg border border-black/[.08] p-4 dark:border-white/[.145]"
+              className="flex items-center justify-between gap-4 rounded-lg border border-black/[.08] p-4 dark:border-white/[.145]"
             >
-              <input
-                type="checkbox"
-                checked={s.completed}
-                onChange={(e) => toggle(s.moduleSlug, e.target.checked)}
-                className="h-5 w-5 accent-zinc-900 dark:accent-zinc-50"
-              />
-              <div>
+              <div className="flex items-center gap-4">
+                <input
+                  type="checkbox"
+                  checked={s.completed}
+                  onChange={(e) => toggle(s.moduleSlug, e.target.checked)}
+                  className="h-5 w-5 accent-zinc-900 dark:accent-zinc-50"
+                />
                 <Link
                   href={`/study/${module.slug}`}
                   className="font-medium text-zinc-900 hover:underline dark:text-zinc-50"
                 >
                   {module.title}
                 </Link>
-                <div className="text-sm text-zinc-500">
-                  {new Date(s.scheduledOn).toLocaleDateString(undefined, {
-                    weekday: "short",
-                    month: "short",
-                    day: "numeric",
-                  })}
-                </div>
               </div>
+              <input
+                type="date"
+                value={new Date(s.scheduledOn).toISOString().slice(0, 10)}
+                onChange={(e) => reschedule(s.moduleSlug, e.target.value)}
+                className="rounded-md border border-black/[.08] bg-transparent px-2 py-1 text-sm dark:border-white/[.145]"
+              />
             </li>
           );
         })}

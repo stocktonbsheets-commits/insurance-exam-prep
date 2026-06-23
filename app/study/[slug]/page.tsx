@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { modules, tracks } from "@/lib/content";
+import { modules, tracks, videoSearchUrl } from "@/lib/content";
 
 export function generateStaticParams() {
   return modules.map((m) => ({ slug: m.slug }));
@@ -32,15 +32,25 @@ export default async function ModulePage({
       <p className="mt-2 text-zinc-600 dark:text-zinc-400">{module.summary}</p>
 
       <a
-        href={`https://www.youtube.com/results?search_query=${encodeURIComponent(module.videoSearch)}`}
+        href={videoSearchUrl(module.videoSearch)}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-zinc-600 hover:underline dark:text-zinc-400"
+        className="mt-6 flex items-center gap-4 rounded-lg border border-red-200 bg-red-50 p-4 transition-colors hover:bg-red-100 dark:border-red-900 dark:bg-red-950 dark:hover:bg-red-900"
       >
-        ▶ Watch videos on this topic
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-600 text-white">
+          ▶
+        </span>
+        <span>
+          <span className="block font-medium text-red-900 dark:text-red-100">
+            Watch videos on {module.title}
+          </span>
+          <span className="block text-sm text-red-700 dark:text-red-300">
+            Opens a YouTube search so you can pick a real video to watch
+          </span>
+        </span>
       </a>
 
-      <h2 className="mt-8 text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+      <h2 className="mt-10 text-lg font-semibold text-zinc-900 dark:text-zinc-50">
         Key Concepts
       </h2>
       <div className="mt-4 flex flex-col gap-4">
@@ -49,11 +59,25 @@ export default async function ModulePage({
             key={i}
             className="rounded-lg border border-black/[.08] p-4 dark:border-white/[.145]"
           >
-            <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
-              {concept.title}
-            </h3>
+            <div className="flex items-start justify-between gap-3">
+              <h3 className="font-medium text-zinc-900 dark:text-zinc-50">
+                {concept.title}
+              </h3>
+              <a
+                href={videoSearchUrl(`${concept.title} ${module.title} insurance exam`)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 text-xs font-medium text-red-700 hover:underline dark:text-red-400"
+              >
+                ▶ Watch
+              </a>
+            </div>
             <p className="mt-2 text-zinc-700 dark:text-zinc-300">
               {concept.explanation}
+            </p>
+            <p className="mt-3 rounded-md bg-blue-50 p-3 text-sm text-blue-900 dark:bg-blue-950 dark:text-blue-200">
+              <span className="font-semibold">Exam focus: </span>
+              {concept.examFocus}
             </p>
           </div>
         ))}

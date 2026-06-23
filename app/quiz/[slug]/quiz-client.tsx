@@ -36,10 +36,12 @@ export function Quiz({
   slug,
   questions,
   questionCount,
+  passThreshold,
 }: {
   slug: string;
   questions: Question[];
   questionCount?: number;
+  passThreshold?: number;
 }) {
   const count = Math.min(questionCount ?? 8, questions.length);
   const [displayQuestions, setDisplayQuestions] = useState<Question[]>([]);
@@ -163,7 +165,24 @@ export function Quiz({
         <div className="flex flex-col items-center gap-4 rounded-lg border border-black/[.08] p-4 text-center dark:border-white/[.145]">
           <p className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
             You scored {score} / {displayQuestions.length}
+            {passThreshold != null && (
+              <> ({Math.round((score / displayQuestions.length) * 100)}%)</>
+            )}
           </p>
+          {passThreshold != null && (
+            <p
+              className={[
+                "rounded-full px-4 py-1 text-sm font-semibold",
+                score / displayQuestions.length >= passThreshold / 100
+                  ? "bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-300"
+                  : "bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300",
+              ].join(" ")}
+            >
+              {score / displayQuestions.length >= passThreshold / 100
+                ? `PASS (need ${passThreshold}%)`
+                : `NOT YET — need ${passThreshold}% to pass`}
+            </p>
+          )}
           <button
             onClick={retake}
             className="h-12 rounded-full bg-foreground px-6 font-medium text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc]"

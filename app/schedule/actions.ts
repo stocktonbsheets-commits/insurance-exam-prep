@@ -58,3 +58,17 @@ export async function toggleModuleComplete(moduleScheduleId: string, completed: 
 
   revalidatePath("/schedule");
 }
+
+export async function rescheduleModule(moduleScheduleId: string, scheduledOn: string) {
+  const session = await auth();
+  if (!session?.user?.id) {
+    throw new Error("Not signed in");
+  }
+
+  await prisma.moduleSchedule.update({
+    where: { id: moduleScheduleId },
+    data: { scheduledOn: new Date(scheduledOn) },
+  });
+
+  revalidatePath("/schedule");
+}

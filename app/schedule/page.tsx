@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { modules } from "@/lib/content";
 import { createStudyPlan } from "./actions";
 import { CompleteToggle } from "./complete-toggle";
+import { DatePicker } from "./date-picker";
 import { GuestSchedule } from "./guest-schedule";
 import { STUDY_DAYS } from "@/lib/schedule";
 
@@ -117,22 +118,17 @@ export default async function SchedulePage() {
                   moduleScheduleId={s.id}
                   initialCompleted={!!s.completedAt}
                 />
-                <div>
-                  <Link
-                    href={`/study/${module.slug}`}
-                    className="font-medium text-zinc-900 hover:underline dark:text-zinc-50"
-                  >
-                    {module.title}
-                  </Link>
-                  <div className="text-sm text-zinc-500">
-                    {s.scheduledOn.toLocaleDateString(undefined, {
-                      weekday: "short",
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </div>
-                </div>
+                <Link
+                  href={`/study/${module.slug}`}
+                  className="font-medium text-zinc-900 hover:underline dark:text-zinc-50"
+                >
+                  {module.title}
+                </Link>
               </div>
+              <DatePicker
+                moduleScheduleId={s.id}
+                initialDate={s.scheduledOn.toISOString().slice(0, 10)}
+              />
             </li>
           );
         })}
