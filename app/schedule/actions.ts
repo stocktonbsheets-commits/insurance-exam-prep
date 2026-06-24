@@ -13,13 +13,16 @@ export async function createStudyPlan(formData: FormData) {
 
   const examDateRaw = formData.get("examDate");
   const studyDays = formData.getAll("studyDays").map((d) => String(d));
+  const trackRaw = formData.get("track");
+  const track =
+    trackRaw === "life-health" || trackRaw === "property-casualty" ? trackRaw : undefined;
 
   if (typeof examDateRaw !== "string" || !examDateRaw || studyDays.length === 0) {
     throw new Error("Missing exam date or study days");
   }
 
   const examDate = new Date(examDateRaw);
-  const scheduleEntries = buildModuleSchedule(examDate, studyDays).map((s) => ({
+  const scheduleEntries = buildModuleSchedule(examDate, studyDays, track).map((s) => ({
     moduleSlug: s.moduleSlug,
     scheduledOn: new Date(s.scheduledOn),
   }));

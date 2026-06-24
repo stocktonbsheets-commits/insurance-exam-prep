@@ -13,7 +13,11 @@ type GuestPlan = {
 
 const STORAGE_KEY = "guest-study-plan";
 
-export function GuestSchedule() {
+export function GuestSchedule({
+  track,
+}: {
+  track?: "life-health" | "property-casualty";
+}) {
   const [plan, setPlan] = useState<GuestPlan | null>(null);
   const [hydrated, setHydrated] = useState(false);
 
@@ -40,7 +44,7 @@ export function GuestSchedule() {
     if (!examDateRaw || studyDays.length === 0) return;
 
     const examDate = new Date(examDateRaw);
-    const schedule = buildModuleSchedule(examDate, studyDays);
+    const schedule = buildModuleSchedule(examDate, studyDays, track);
     save({ examDate: examDateRaw, studyDays, schedule });
   }
 

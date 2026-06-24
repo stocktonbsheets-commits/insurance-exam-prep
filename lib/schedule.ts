@@ -33,9 +33,15 @@ export type ScheduledModule = {
   completed: boolean;
 };
 
-export function buildModuleSchedule(examDate: Date, studyDays: string[]): ScheduledModule[] {
+export function buildModuleSchedule(
+  examDate: Date,
+  studyDays: string[],
+  track?: "life-health" | "property-casualty"
+): ScheduledModule[] {
   const dates = buildScheduleDates(examDate, studyDays);
-  const moduleSlugs = modules.map((m) => m.slug);
+  const moduleSlugs = (track ? modules.filter((m) => m.track === track) : modules).map(
+    (m) => m.slug
+  );
 
   return moduleSlugs.map((slug, i) => {
     const dateIndex =

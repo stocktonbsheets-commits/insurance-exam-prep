@@ -8,7 +8,15 @@ import { DatePicker } from "./date-picker";
 import { GuestSchedule } from "./guest-schedule";
 import { STUDY_DAYS } from "@/lib/schedule";
 
-export default async function SchedulePage() {
+export default async function SchedulePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ track?: string }>;
+}) {
+  const { track: trackRaw } = await searchParams;
+  const track =
+    trackRaw === "life-health" || trackRaw === "property-casualty" ? trackRaw : undefined;
+  const trackModules = track ? modules.filter((m) => m.track === track) : modules;
   const session = await auth();
 
   if (!session?.user) {
@@ -25,7 +33,7 @@ export default async function SchedulePage() {
           </Link>{" "}
           to save it permanently and access it from any device.
         </p>
-        <GuestSchedule />
+        <GuestSchedule track={track} />
       </main>
     );
   }
@@ -43,10 +51,11 @@ export default async function SchedulePage() {
         </h1>
         <p className="mt-2 text-zinc-600 dark:text-zinc-400">
           Tell us your exam date and which days you can study. We&apos;ll
-          spread the {modules.length} modules across that window.
+          spread the {trackModules.length} modules across that window.
         </p>
 
         <form action={createStudyPlan} className="mt-8 flex flex-col gap-6">
+          {track && <input type="hidden" name="track" value={track} />}
           <div>
             <label className="block text-sm font-medium text-zinc-900 dark:text-zinc-50">
               Exam date
