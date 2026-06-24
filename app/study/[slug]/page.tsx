@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { modules, tracks, videoSearchUrl } from "@/lib/content";
+import { StateDisclaimer } from "./state-disclaimer";
+
+const REGULATION_SLUGS = ["lh-regulation", "pc-regulation"];
 
 export function generateStaticParams() {
   return modules.map((m) => ({ slug: m.slug }));
@@ -30,6 +33,8 @@ export default async function ModulePage({
         {module.title}
       </h1>
       <p className="mt-2 text-zinc-600 dark:text-zinc-400">{module.summary}</p>
+
+      {REGULATION_SLUGS.includes(module.slug) && <StateDisclaimer />}
 
       <a
         href={videoSearchUrl(module.videoSearch)}

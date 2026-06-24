@@ -33,7 +33,8 @@ export default async function ExamPage({
       </h1>
       <p className="mt-2 text-zinc-600 dark:text-zinc-400">
         30 random questions pulled from every topic in this track. You need
-        70% correct to pass, matching Idaho's real exam threshold.
+        70% correct to pass — most states use this threshold, but confirm
+        your exact state's passing score with your official source.
       </p>
       <Quiz
         slug={`exam-${trackKey}`}

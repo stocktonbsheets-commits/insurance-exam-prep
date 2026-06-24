@@ -188,7 +188,7 @@ export const questionsBySlug: Record<string, Question[]> = {
   ],
   "lh-regulation": [
     {
-      question: "What must an Idaho producer do before applying for a life/health license?",
+      question: "What must a producer do before applying for a life/health license?",
       options: [
         "Pass a background check only",
         "Complete state-approved pre-licensing education and pass the exam",
@@ -198,7 +198,7 @@ export const questionsBySlug: Record<string, Question[]> = {
       correctIndex: 1,
     },
     {
-      question: "What is required to keep an Idaho producer license active at renewal?",
+      question: "What is required to keep a producer license active at renewal?",
       options: ["Continuing education hours", "A new background check every year", "Re-taking the licensing exam", "Nothing is required"],
       correctIndex: 0,
     },
@@ -218,7 +218,7 @@ export const questionsBySlug: Record<string, Question[]> = {
       correctIndex: 0,
     },
     {
-      question: "Which of the following must an Idaho producer report to the Department of Insurance?",
+      question: "Which of the following must a producer report to their state's insurance department?",
       options: [
         "A change in favorite restaurant",
         "Certain administrative actions and criminal convictions",
@@ -228,9 +228,9 @@ export const questionsBySlug: Record<string, Question[]> = {
       correctIndex: 1,
     },
     {
-      question: "An insurance producer license in Idaho is issued by the:",
+      question: "An insurance producer license is issued by the:",
       options: [
-        "Idaho Department of Insurance",
+        "State's department of insurance",
         "National Association of Insurance Commissioners",
         "Local county clerk",
         "Federal Trade Commission",
@@ -632,7 +632,7 @@ export const questionsBySlug: Record<string, Question[]> = {
       correctIndex: 1,
     },
     {
-      question: "Idaho producers must complete pre-licensing education for:",
+      question: "Producers must complete pre-licensing education for:",
       options: [
         "Each line of authority they want to sell",
         "Only the first license they obtain",
@@ -642,17 +642,17 @@ export const questionsBySlug: Record<string, Question[]> = {
       correctIndex: 0,
     },
     {
-      question: "Cancellation and nonrenewal of policies in Idaho must follow:",
+      question: "Cancellation and nonrenewal of policies must follow:",
       options: [
         "No specific requirements",
-        "Required notice periods set by Idaho law",
+        "Required notice periods set by the state's law",
         "Whatever the insurer prefers",
         "Federal notice requirements only",
       ],
       correctIndex: 1,
     },
     {
-      question: "Producers must report which of the following to the Idaho Department of Insurance?",
+      question: "Producers must report which of the following to their state's insurance department?",
       options: [
         "Favorite product line",
         "Address and name changes",
@@ -672,17 +672,17 @@ export const questionsBySlug: Record<string, Question[]> = {
       correctIndex: 1,
     },
     {
-      question: "A resident producer license in Idaho is required for:",
+      question: "A resident producer license is required for:",
       options: [
         "Selling insurance only out of state",
-        "Selling insurance as a resident of Idaho",
+        "Selling insurance as a resident of that state",
         "Only group health products",
         "Only commercial property products",
       ],
       correctIndex: 1,
     },
     {
-      question: "Rebating laws in Idaho generally prohibit:",
+      question: "Rebating laws generally prohibit:",
       options: [
         "Offering the standard policy terms",
         "Giving anything of value not stated in the policy to induce a sale",

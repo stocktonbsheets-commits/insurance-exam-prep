@@ -148,37 +148,38 @@ export const modules: Module[] = [
   {
     slug: "lh-regulation",
     track: "life-health",
-    title: "Idaho Laws & Regulations (Life & Health)",
-    summary: "State-specific rules tested on the Idaho L&H exam.",
-    videoSearch: "Idaho insurance producer license laws and regulations",
+    title: "State Laws & Regulations (Life & Health)",
+    summary:
+      "Concepts common across most states' L&H exams. Exact numbers (CE hours, notice periods) vary by state — verify against your state's official rules.",
+    videoSearch: "insurance producer license laws and regulations explained",
     concepts: [
       {
-        title: "Getting Licensed in Idaho",
+        title: "Getting Licensed",
         explanation:
-          "Before anyone can sell life or health insurance in Idaho, they must complete state-approved pre-licensing education covering the lines of authority they intend to sell, then pass the corresponding state licensing exam. Once the exam is passed, the candidate submits a license application to the Idaho Department of Insurance, which includes a background check. Only after the license is issued can the person legally solicit, negotiate, or sell insurance products in the state. Selling without a valid license is a serious violation that can result in fines and bar future licensure.",
+          "Before anyone can sell life or health insurance, they must complete state-approved pre-licensing education covering the lines of authority they intend to sell, then pass the corresponding state licensing exam. Once the exam is passed, the candidate submits a license application to their state's insurance department, which includes a background check. Only after the license is issued can the person legally solicit, negotiate, or sell insurance products in that state. Selling without a valid license is a serious violation that can result in fines and bar future licensure. This sequence is consistent nationwide, though exact requirements (hours of pre-licensing education, fees, exam vendor) differ by state.",
         examFocus:
-          "Order of operations: pre-licensing education → pass exam → apply (background check) → license issued → THEN you may sell.",
+          "Order of operations: pre-licensing education → pass exam → apply (background check) → license issued → THEN you may sell. This sequence is tested everywhere, even though the specific hour/fee requirements differ by state.",
       },
       {
         title: "Keeping a License Active",
         explanation:
-          "Getting licensed is only the first step — Idaho requires producers to complete continuing education (CE) hours during each renewal period to keep their license active. This is separate and distinct from the pre-licensing education required to get the license in the first place; CE exists to keep producers current on changing laws, new products, and ethical practice standards. Failing to complete CE by the renewal deadline can result in the license lapsing, which would require the producer to stop selling insurance until it's resolved.",
+          "Getting licensed is only the first step — states require producers to complete continuing education (CE) hours during each renewal period to keep their license active. This is separate and distinct from the pre-licensing education required to get the license in the first place; CE exists to keep producers current on changing laws, new products, and ethical practice standards. Failing to complete CE by the renewal deadline can result in the license lapsing, which would require the producer to stop selling insurance until it's resolved. The exact number of CE hours and renewal cycle length varies by state — check your state's specific requirement.",
         examFocus:
-          "CE = renewal requirement (recurring); pre-licensing education = one-time, before the first license. Don't swap them.",
+          "CE = renewal requirement (recurring); pre-licensing education = one-time, before the first license. Don't swap them. Your state's exam will ask for an exact CE hour number — confirm it from official sources before test day.",
       },
       {
         title: "Unfair Practices and Misrepresentation",
         explanation:
-          "Idaho insurance code prohibits a range of unfair trade practices designed to protect consumers. Misrepresentation — making false or misleading statements about a policy's terms, benefits, or the insurer's financial condition — is prohibited whether intentional or not. Unfair claims practices, such as unreasonably delaying or denying valid claims, misrepresenting policy provisions to deny a claim, or failing to adopt reasonable standards for prompt claim investigation, are also against the law. These rules exist because the insurer-policyholder relationship is inherently unequal in information and power, and the state has an interest in keeping insurers honest.",
+          "Every state's insurance code prohibits a range of unfair trade practices designed to protect consumers, generally modeled on the NAIC's Unfair Trade Practices Act. Misrepresentation — making false or misleading statements about a policy's terms, benefits, or the insurer's financial condition — is prohibited whether intentional or not. Unfair claims practices, such as unreasonably delaying or denying valid claims, misrepresenting policy provisions to deny a claim, or failing to adopt reasonable standards for prompt claim investigation, are also against the law nearly everywhere. These rules exist because the insurer-policyholder relationship is inherently unequal in information and power, and every state has an interest in keeping insurers honest.",
         examFocus:
-          "Misrepresentation is prohibited even if UNINTENTIONAL — intent doesn't matter for the violation to count.",
+          "Misrepresentation is prohibited even if UNINTENTIONAL — intent doesn't matter for the violation to count. This concept is consistent across states even when exact statute numbers differ.",
       },
       {
         title: "Replacement Disclosure Requirements",
         explanation:
-          "When a producer helps a client replace an existing life or health policy with a new one — even if both policies are from the same insurer — specific disclosure requirements kick in. The producer must provide the client with information that allows them to compare the old and new policy, since replacing a policy can mean losing accumulated cash value, restarting contestability and suicide-exclusion periods, or facing new exclusions for pre-existing conditions. These rules exist specifically to combat \"twisting\" — inducing a client to replace a policy through misrepresentation or omission of these tradeoffs.",
+          "When a producer helps a client replace an existing life or health policy with a new one — even if both policies are from the same insurer — specific disclosure requirements kick in almost everywhere. The producer must provide the client with information that allows them to compare the old and new policy, since replacing a policy can mean losing accumulated cash value, restarting contestability and suicide-exclusion periods, or facing new exclusions for pre-existing conditions. These rules exist specifically to combat \"twisting\" — inducing a client to replace a policy through misrepresentation or omission of these tradeoffs.",
         examFocus:
-          "Disclosure trigger is REPLACEMENT itself — applies even within the same insurer. This is the rule that exists to prevent twisting.",
+          "Disclosure trigger is REPLACEMENT itself — applies even within the same insurer. This is the rule that exists to prevent twisting, and it's tested in nearly every state's exam.",
       },
     ],
     examTraps: [
@@ -463,41 +464,42 @@ export const modules: Module[] = [
   {
     slug: "pc-regulation",
     track: "property-casualty",
-    title: "Idaho Laws & Regulations (Property & Casualty)",
-    summary: "State-specific rules tested on the Idaho P&C exam.",
-    videoSearch: "Idaho property casualty insurance producer license laws",
+    title: "State Laws & Regulations (Property & Casualty)",
+    summary:
+      "Concepts common across most states' P&C exams. Exact numbers (CE hours, notice periods) vary by state — verify against your state's official rules.",
+    videoSearch: "property casualty insurance producer license laws explained",
     concepts: [
       {
-        title: "Resident Licensing in Idaho",
+        title: "Resident Licensing",
         explanation:
-          "A resident producer license in Idaho is for individuals who live in (and primarily transact insurance business in) Idaho. To get licensed, a candidate must complete pre-licensing education for each specific line of authority they intend to sell — property, casualty, or both are separate lines requiring separate education and exams — then pass the corresponding exam and apply through the Idaho Department of Insurance, which conducts a background check before issuing the license.",
+          "A resident producer license is for individuals who live in (and primarily transact insurance business in) their home state. To get licensed, a candidate must complete pre-licensing education for each specific line of authority they intend to sell — property, casualty, or both are separate lines requiring separate education and exams in most states — then pass the corresponding exam and apply through their state's insurance department, which conducts a background check before issuing the license. The pre-licensing hour requirements and fees vary by state, so confirm the exact numbers for your state.",
         examFocus:
-          "Key fact: property and casualty are SEPARATE lines of authority, each requiring their own pre-licensing education and exam — selling both requires both licenses.",
+          "Key fact: property and casualty are SEPARATE lines of authority, each requiring their own pre-licensing education and exam — selling both requires both licenses, in essentially every state.",
       },
       {
         title: "Twisting and Rebating",
         explanation:
-          "Idaho law prohibits two distinct unfair practices that sound similar but work differently. Twisting is inducing a policyholder to replace their existing policy through misrepresentation — lying about or distorting the comparison between the old and new policy to make the replacement look better than it is. Rebating is offering a client something of value not stated in the policy itself (like cash back or a gift) to induce them to buy — essentially, an under-the-table incentive to make a sale. Both are illegal, but they target different moments: twisting targets the comparison/decision process, rebating targets the financial incentive to buy.",
+          "Nearly every state's insurance law prohibits two distinct unfair practices that sound similar but work differently. Twisting is inducing a policyholder to replace their existing policy through misrepresentation — lying about or distorting the comparison between the old and new policy to make the replacement look better than it is. Rebating is offering a client something of value not stated in the policy itself (like cash back or a gift) to induce them to buy — essentially, an under-the-table incentive to make a sale. Both are illegal nearly everywhere, but they target different moments: twisting targets the comparison/decision process, rebating targets the financial incentive to buy.",
         examFocus:
           "Match the act to the keyword: REPLACE + lie = twisting. BUY + extra incentive = rebating. The exam often gives a short scenario and asks you to name the violation.",
       },
       {
         title: "Cancellation and Nonrenewal Notice Requirements",
         explanation:
-          "Insurers in Idaho can't simply drop a policyholder's coverage without warning — cancellation (ending a policy mid-term) and nonrenewal (declining to renew at the end of a term) both require advance written notice, with specific minimum notice periods set by Idaho law. This gives the policyholder time to shop for replacement coverage and avoid a gap in protection. The required notice period and process can differ for cancellation versus nonrenewal, and for different reasons (such as nonpayment versus underwriting decisions).",
+          "Insurers generally can't simply drop a policyholder's coverage without warning — cancellation (ending a policy mid-term) and nonrenewal (declining to renew at the end of a term) both require advance written notice in every state, with specific minimum notice periods set by that state's law. This gives the policyholder time to shop for replacement coverage and avoid a gap in protection. The required notice period and process can differ for cancellation versus nonrenewal, and for different reasons (such as nonpayment versus underwriting decisions) — and the exact day counts differ by state.",
         examFocus:
-          "Distinguish cancellation (mid-term) from nonrenewal (end-of-term) — both require advance WRITTEN notice, but the required lead time can differ.",
+          "Distinguish cancellation (mid-term) from nonrenewal (end-of-term) — both require advance WRITTEN notice, but the required lead time can differ and your state's exam will expect the specific number for your state.",
       },
       {
         title: "Errors & Omissions and Continuing Obligations",
         explanation:
-          "Errors & omissions (E&O) coverage protects the PRODUCER (not the client) from claims that they made a professional mistake — giving bad advice, failing to procure coverage they promised, or making a paperwork error that caused a client financial harm. Beyond E&O awareness, licensed producers in Idaho have ongoing administrative obligations: reporting changes of address or name to the Department of Insurance, and reporting certain criminal convictions or administrative actions taken against them in other states, since failing to disclose these can itself be grounds for license action.",
+          "Errors & omissions (E&O) coverage protects the PRODUCER (not the client) from claims that they made a professional mistake — giving bad advice, failing to procure coverage they promised, or making a paperwork error that caused a client financial harm. Beyond E&O awareness, licensed producers everywhere have ongoing administrative obligations: reporting changes of address or name to their state's insurance department, and reporting certain criminal convictions or administrative actions taken against them in other states, since failing to disclose these can itself be grounds for license action.",
         examFocus:
-          "E&O protects the PRODUCER, not the client — a frequently swapped detail. Also remember: failing to report a conviction/address change is itself a violation.",
+          "E&O protects the PRODUCER, not the client — a frequently swapped detail. Also remember: failing to report a conviction/address change is itself a violation, in virtually every state.",
       },
     ],
     examTraps: [
-      "Resident vs. nonresident licensing requirements differ — a resident license is for producers who live and primarily transact business in Idaho.",
+      "Resident vs. nonresident licensing requirements differ — a resident license is for producers who live and primarily transact business in their home state.",
       "Nonrenewal notice requirements exist to protect the policyholder from being dropped without enough time to find new coverage — exam questions often test the minimum notice period concept, not always quizzing the policy itself.",
       "Errors & omissions (E&O) coverage protects the PRODUCER from claims of professional negligence — don't confuse it with a client's own liability coverage.",
     ],

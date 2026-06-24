@@ -9,8 +9,9 @@ export default function ExamIndexPage() {
       </h1>
       <p className="mt-2 text-zinc-600 dark:text-zinc-400">
         A longer, full-length practice exam pulling questions from every topic
-        in a track. Idaho's real exams require roughly 70% to pass — this
-        practice exam uses the same bar.
+        in a track. Most states require roughly 70% to pass — this practice
+        exam uses that bar. Confirm your exact state's passing score with
+        your official source.
       </p>
 
       <ul className="mt-8 flex flex-col gap-3">
