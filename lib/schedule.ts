@@ -1,5 +1,21 @@
 import { modules } from "@/lib/content";
 
+// Parses a date-only "YYYY-MM-DD" string as local midnight, not UTC —
+// new Date("YYYY-MM-DD") parses as UTC, which rolls the displayed date
+// back a day in any timezone behind UTC (all of the US).
+export function parseDateOnly(value: string): Date {
+  const [y, m, d] = value.split("-").map(Number);
+  return new Date(y, m - 1, d);
+}
+
+export function daysUntil(date: Date): number {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const target = new Date(date);
+  target.setHours(0, 0, 0, 0);
+  return Math.round((target.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+}
+
 const WEEKDAY_INDEX: Record<string, number> = {
   sun: 0,
   mon: 1,

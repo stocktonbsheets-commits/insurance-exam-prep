@@ -7,15 +7,37 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  passwordHash  String?
-  accounts      Account[]
-  sessions      Session[]
-  studyPlan     StudyPlan?
+  id              String    @id @default(cuid())
+  name            String?
+  email           String?   @unique
+  emailVerified   DateTime?
+  image           String?
+  passwordHash    String?
+  purchasedTracks String[]  @default([])
+  accounts        Account[]
+  sessions        Session[]
+  studyPlan       StudyPlan?
+  purchases       Purchase[]
+}
+
+model Lead {
+  id        String   @id @default(cuid())
+  email     String
+  track     String
+  score     Int
+  total     Int
+  createdAt DateTime @default(now())
+}
+
+model Purchase {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  track           String
+  stripeSessionId String   @unique
+  amountCents     Int
+  referral        String?
+  createdAt       DateTime @default(now())
 }
 
 model Account {

@@ -16,6 +16,7 @@ export type Module = {
   concepts: Concept[];
   examTraps: string[];
   videoSearch: string;
+  free?: boolean;
 };
 
 export const modules: Module[] = [
@@ -23,6 +24,7 @@ export const modules: Module[] = [
     slug: "lh-life-basics",
     track: "life-health",
     title: "Life Insurance Basics",
+    free: true,
     summary: "Core life insurance concepts: policy types, parties, and terminology.",
     videoSearch: "life insurance basics term whole universal explained",
     concepts: [
@@ -146,52 +148,242 @@ export const modules: Module[] = [
     ],
   },
   {
-    slug: "lh-regulation",
+    slug: "lh-underwriting-application",
     track: "life-health",
-    title: "State Laws & Regulations (Life & Health)",
-    summary:
-      "Concepts common across most states' L&H exams. Exact numbers (CE hours, notice periods) vary by state — verify against your state's official rules.",
-    videoSearch: "insurance producer license laws and regulations explained",
+    title: "Life Insurance Application, Underwriting & Contract Law",
+    summary: "How an application becomes a policy — underwriting, risk classification, and the contract law principles unique to insurance.",
+    videoSearch: "life insurance underwriting process application contract law explained",
     concepts: [
       {
-        title: "Getting Licensed",
+        title: "Completing the Application",
         explanation:
-          "Before anyone can sell life or health insurance, they must complete state-approved pre-licensing education covering the lines of authority they intend to sell, then pass the corresponding state licensing exam. Once the exam is passed, the candidate submits a license application to their state's insurance department, which includes a background check. Only after the license is issued can the person legally solicit, negotiate, or sell insurance products in that state. Selling without a valid license is a serious violation that can result in fines and bar future licensure. This sequence is consistent nationwide, though exact requirements (hours of pre-licensing education, fees, exam vendor) differ by state.",
+          "The application is the foundation of the entire insurance contract — it's where the insurer gathers the information used to decide whether to issue a policy and at what price. The application requires specific signatures (the applicant and, if different, the proposed insured), and any changes to it must be initialed by the applicant, not just altered by the agent. An incomplete application can delay or derail underwriting, and answers on it are treated as representations — statements believed true to the best of the applicant's knowledge — rather than warranties (which would need to be literally, exactly true).",
         examFocus:
-          "Order of operations: pre-licensing education → pass exam → apply (background check) → license issued → THEN you may sell. This sequence is tested everywhere, even though the specific hour/fee requirements differ by state.",
+          "Application answers are REPRESENTATIONS, not warranties — they need to be substantially true and made in good faith, not perfectly precise. This distinction matters when an insurer later tries to contest a claim.",
       },
       {
-        title: "Keeping a License Active",
+        title: "Insurable Interest and Underwriting Information Sources",
         explanation:
-          "Getting licensed is only the first step — states require producers to complete continuing education (CE) hours during each renewal period to keep their license active. This is separate and distinct from the pre-licensing education required to get the license in the first place; CE exists to keep producers current on changing laws, new products, and ethical practice standards. Failing to complete CE by the renewal deadline can result in the license lapsing, which would require the producer to stop selling insurance until it's resolved. The exact number of CE hours and renewal cycle length varies by state — check your state's specific requirement.",
+          "Insurable interest means the policy owner would suffer a genuine financial or emotional loss if the insured died — required at the time the policy is applied for to prevent insurance from becoming a wagering contract on someone else's life. Underwriters gather information beyond the application itself: medical information and consumer reports, governed in part by the Fair Credit Reporting Act (FCRA), which gives applicants the right to know what's in their file and to dispute inaccuracies. Based on all this information, underwriters sort applicants into risk classifications (preferred, standard, substandard) that determine the premium charged.",
         examFocus:
-          "CE = renewal requirement (recurring); pre-licensing education = one-time, before the first license. Don't swap them. Your state's exam will ask for an exact CE hour number — confirm it from official sources before test day.",
+          "Insurable interest must exist AT THE TIME OF APPLICATION for life insurance — unlike property insurance, it does not need to continue existing at the time of a claim/death.",
       },
       {
-        title: "Unfair Practices and Misrepresentation",
+        title: "STOLI and Other Underwriting Red Flags",
         explanation:
-          "Every state's insurance code prohibits a range of unfair trade practices designed to protect consumers, generally modeled on the NAIC's Unfair Trade Practices Act. Misrepresentation — making false or misleading statements about a policy's terms, benefits, or the insurer's financial condition — is prohibited whether intentional or not. Unfair claims practices, such as unreasonably delaying or denying valid claims, misrepresenting policy provisions to deny a claim, or failing to adopt reasonable standards for prompt claim investigation, are also against the law nearly everywhere. These rules exist because the insurer-policyholder relationship is inherently unequal in information and power, and every state has an interest in keeping insurers honest.",
+          "Stranger/Investor-Owned Life Insurance (STOLI/IOLI) describes an arrangement where a policy is procured on someone's life specifically for an investor or stranger to profit from it, rather than for someone with a genuine insurable interest — these arrangements are generally illegal because they violate the insurable interest requirement and can incentivize harm to the insured. Underwriters are trained to watch for STOLI red flags, like premium financing arrangements set up by an unrelated investor at the time of application.",
         examFocus:
-          "Misrepresentation is prohibited even if UNINTENTIONAL — intent doesn't matter for the violation to count. This concept is consistent across states even when exact statute numbers differ.",
+          "STOLI arrangements fail the insurable interest requirement at its core — a stranger or investor has no genuine stake in the insured's continued life, which is exactly why these arrangements are prohibited.",
       },
       {
-        title: "Replacement Disclosure Requirements",
+        title: "Delivering the Policy and Contract Law Basics",
         explanation:
-          "When a producer helps a client replace an existing life or health policy with a new one — even if both policies are from the same insurer — specific disclosure requirements kick in almost everywhere. The producer must provide the client with information that allows them to compare the old and new policy, since replacing a policy can mean losing accumulated cash value, restarting contestability and suicide-exclusion periods, or facing new exclusions for pre-existing conditions. These rules exist specifically to combat \"twisting\" — inducing a client to replace a policy through misrepresentation or omission of these tradeoffs.",
+          "Once issued, a policy isn't fully in force until it's delivered to the policyholder and the producer has explained its provisions, riders, exclusions, and any rating (extra premium for elevated risk) — coverage generally begins once the policy is delivered, the first premium is paid, and the insured's health hasn't changed since the application. Every insurance contract also reflects specific contract law principles: it requires consideration (premium for promise), offer and acceptance, competent parties, and a legal purpose, plus unique characteristics — it's conditional (payment is conditioned on the insured's death), unilateral (only the insurer makes a binding promise), adhesion (the insurer writes it, the insured simply accepts or rejects), and aleatory (the value exchanged isn't equal — a small premium can lead to a large payout).",
         examFocus:
-          "Disclosure trigger is REPLACEMENT itself — applies even within the same insurer. This is the rule that exists to prevent twisting, and it's tested in nearly every state's exam.",
+          "Memorize the four unique contract characteristics: conditional, unilateral, adhesion, aleatory. Exam questions often describe one of these features and ask which characteristic it demonstrates.",
       },
     ],
     examTraps: [
-      "Replacement disclosure rules apply even if the new policy is from the SAME insurer — the trigger is replacing a policy, not switching companies.",
-      "Twisting and rebating are both prohibited but are different acts — twisting misrepresents to induce replacement, rebating gives something of value to induce a sale.",
-      "Continuing education is about KEEPING a license active at renewal, not about getting licensed the first time — don't mix it up with pre-licensing education.",
+      "Application answers are representations (substantially true, good faith), not warranties (must be literally, exactly true) — a frequently tested distinction.",
+      "Insurable interest for life insurance is required only AT THE TIME OF APPLICATION, not continuously through the insured's death — different from property insurance's ongoing requirement.",
+      "STOLI/IOLI arrangements fail because the policy owner lacks genuine insurable interest — a stranger profiting from someone else's death is exactly what insurable interest rules prevent.",
+      "The four unique insurance contract traits — conditional, unilateral, adhesion, aleatory — are commonly tested by describing the trait and asking you to name it.",
+    ],
+  },
+  {
+    slug: "lh-retirement-life-settlements",
+    track: "life-health",
+    title: "Retirement Planning, Life Settlements & Group Life Concepts",
+    summary: "Third-party ownership, life settlements, group life, retirement plans, needs analysis, and the tax treatment of life insurance.",
+    videoSearch: "life insurance retirement planning needs analysis tax treatment explained",
+    concepts: [
+      {
+        title: "Third-Party Ownership and Life Settlements",
+        explanation:
+          "A life insurance policy's owner doesn't have to be the insured — third-party ownership is common, like a business owning a key person policy on an employee, or a parent owning a policy insuring a child. A life settlement lets a policy owner who no longer wants or can afford a policy sell it to a third party for a lump sum greater than the cash surrender value but less than the death benefit, rather than simply lapsing or surrendering it for less money.",
+        examFocus:
+          "A life settlement payout sits BETWEEN cash surrender value and the full death benefit — that gap is exactly why it's more attractive than a simple surrender for a policy owner who no longer needs the coverage.",
+      },
+      {
+        title: "Group Life: Contributory vs. Noncontributory",
+        explanation:
+          "Group life plans are either contributory (employees pay part of the premium, typically requiring a minimum participation percentage like 75% of eligible employees to prevent adverse selection) or noncontributory (the employer pays the entire premium, which typically requires 100% participation since there's no cost barrier to joining). When a covered employee leaves the group, the conversion privilege generally lets them convert to an individual policy without proving insurability, within a limited window.",
+        examFocus:
+          "Contributory plans need a MINIMUM PARTICIPATION percentage (often 75%) to guard against adverse selection; noncontributory plans require 100% participation since the employer covers the full cost.",
+      },
+      {
+        title: "Qualified vs. Nonqualified Retirement Plans",
+        explanation:
+          "Qualified retirement plans (like 401(k)s) meet IRS requirements for favorable tax treatment: contributions are typically tax-deductible (or pre-tax) and the funds grow tax-deferred, but the plan must follow strict rules about nondiscrimination and contribution limits. Nonqualified plans don't meet those IRS requirements and don't get the same favorable tax treatment up front, but they offer employers more flexibility — for example, the ability to provide enhanced benefits to select key employees without offering them to the entire workforce.",
+        examFocus:
+          "Qualified = IRS tax-favored, but must follow nondiscrimination rules covering all eligible employees. Nonqualified = no special tax break going in, but flexible enough to benefit select key employees only.",
+      },
+      {
+        title: "Life Insurance Needs Analysis",
+        explanation:
+          "Needs analysis is the process of calculating how much life insurance a person or business should actually carry. Personal needs analysis considers income replacement for dependents, final expenses, debt payoff, and education funding. Business needs analysis includes key person coverage (protecting a business against the financial loss of losing a critical employee or owner) and buy-sell funding (using life insurance proceeds to fund a buyout of a deceased owner's interest in the business, so the remaining owners or the business itself can purchase that interest from the deceased's estate).",
+        examFocus:
+          "Key person coverage protects the BUSINESS from losing a critical person; buy-sell funding lets the REMAINING owners/business buy out a deceased owner's share — two different business uses, easy to conflate.",
+      },
+      {
+        title: "Tax Treatment of Life Insurance",
+        explanation:
+          "Life insurance death benefits paid to a beneficiary are generally received income tax-free, one of the product's most significant advantages. Cash value growth inside a permanent policy is tax-deferred while it accumulates. Individual life insurance premiums are generally not tax-deductible. A Modified Endowment Contract (MEC) is a policy that's been overfunded relative to IRS limits, losing some favorable tax treatment on withdrawals (taxed on a last-in-first-out basis, with potential penalties for early withdrawal) even though the death benefit remains tax-free.",
+        examFocus:
+          "Death benefits = income tax-free to the beneficiary (the single most tested tax fact in this section). Premiums are NOT deductible. A MEC loses favorable loan/withdrawal tax treatment, but the death benefit stays tax-free regardless.",
+      },
+    ],
+    examTraps: [
+      "Life insurance death benefits are received income tax-free by the beneficiary — but that doesn't mean ALL transactions involving the policy are tax-free (MECs, for example, lose favorable withdrawal treatment).",
+      "Contributory group plans need roughly 75% minimum participation to prevent adverse selection; noncontributory plans need 100% since the employer pays it all.",
+      "Key person coverage protects the business from losing a key employee; buy-sell funding lets remaining owners buy out a deceased owner's interest — different purposes, frequently swapped on the exam.",
+      "A life settlement payout falls between cash surrender value and the full death benefit — know that range specifically.",
+    ],
+  },
+  {
+    slug: "lh-regulation-idaho-general",
+    track: "life-health",
+    title: "Idaho Insurance Law: Licensing & Marketing Practices",
+    summary:
+      "Idaho Title 41 statutes common to every line — Director's authority, producer licensing, and unfair trade practices. Worth roughly 12 of the 75 scored questions on each Idaho L&H exam.",
+    videoSearch: "Idaho insurance producer license Title 41 explained",
+    concepts: [
+      {
+        title: "The Director of the Department of Insurance",
+        explanation:
+          "Idaho Code 41-203 places administration of Idaho's insurance laws in the hands of the Director of the Department of Insurance. The Director can examine insurers and producers (41-210, 219, 220), hold hearings and issue orders (41-212, 232, 235), and levy penalties for violations (41-117, 117A). Nearly every licensing and enforcement question on the Idaho-specific portion of either exam traces back to this office's authority.",
+        examFocus:
+          "If a question asks who can suspend a license, order a hearing, or examine an insurer's records, the answer is the Director of the Department of Insurance under 41-203.",
+      },
+      {
+        title: "Who Must Be Licensed and How",
+        explanation:
+          "Under 41-1003(8) and 41-1004, anyone who sells, solicits, or negotiates insurance in Idaho must hold a producer license. Idaho distinguishes resident producers — who live in and primarily transact business in Idaho, per the definitions in 41-1003 — from nonresident producers (41-1009, 1010), who hold a home-state license and obtain an Idaho nonresident license through reciprocity. Life and Health are separate lines of authority requiring their own pre-licensing education, application (41-1006, 1007), and exam (41-1006) unless an exemption applies (41-1005, 1007(4), 1012). The Director can deny a license under 41-1011, 1016.",
+        examFocus:
+          "Life and Health are separate lines of authority in Idaho — a producer wanting to sell both needs both lines on their license. Resident status hinges on where the producer lives and primarily transacts business, not where any one client is located.",
+      },
+      {
+        title: "Maintaining a License: CE, Renewal, and Discipline",
+        explanation:
+          "An Idaho producer must complete continuing education (41-1013, IDAPA 18.06.04), keep their license current through renewal and fees (41-1008, IDAPA 18.01.02), keep accurate records (41-1036), and report any change of address (41-1008(6), 1009(3)). The Director can suspend or revoke a license — including for a felony conviction — under 41-1016 and 41-1026. Producers owe Idaho a fiduciary duty over premium funds they handle (41-1024, 1323, 1325, 1803) and must disclose and properly charge any fees beyond commission (41-1030).",
+        examFocus:
+          "A felony conviction is explicit grounds for suspension or revocation under 41-1016/1026 — a frequently tested 'which of these can cost you your license' fact.",
+      },
+      {
+        title: "Unfair Trade Practices (Twisting, Rebating, and More)",
+        explanation:
+          "Idaho Code 41-1303 through 41-1315 lists specific unfair methods of competition. Rebating (41-1314) is offering anything of value not stated in the policy to induce a sale. Twisting (41-1305) is inducing a policyholder to replace an existing policy through misrepresentation — especially relevant for life and health, where replacing a policy can mean losing accumulated cash value or restarting contestability periods. Misrepresentation and false advertising (41-1303, 1304), defamation (41-1308), false financial statements (41-1306), boycott/coercion/intimidation (41-1309), unfair discrimination (41-1313, 1315), coercion of a borrower (41-1310-1312), and fraud (41-290, 293) round out the list. Violations expose a producer to penalties under 41-117, 1016, 1327, 1329A.",
+        examFocus:
+          "REPLACE + lie about it = twisting (41-1305). Anything of value not in the policy to induce a sale = rebating (41-1314). Idaho's replacement-disclosure rules (IDAPA 18.03.04, covered in the life-specific module) exist specifically to combat twisting.",
+      },
+    ],
+    examTraps: [
+      "Life and Health are separate Idaho lines of authority (41-1003(8), 1004) — don't assume one exam covers both lines automatically.",
+      "A felony conviction is named explicitly (41-1016, 1026) as grounds for license suspension/revocation.",
+      "Twisting targets the REPLACEMENT decision (41-1305); rebating targets the PURCHASE incentive (41-1314) — frequently swapped on exam scenarios.",
+      "Resident vs. nonresident licensing hinges on where the producer lives and primarily transacts business (41-1003(9)), not where a client happens to be.",
+    ],
+  },
+  {
+    slug: "lh-regulation-idaho-life",
+    track: "life-health",
+    title: "Idaho Insurance Law: Life-Specific Statutes",
+    summary:
+      "Idaho statutes specific to life insurance — policy replacement, annuity suitability, individual and group life provisions, and the Life Settlements Act.",
+    videoSearch: "Idaho life insurance law policy replacement annuity suitability explained",
+    concepts: [
+      {
+        title: "Policy Replacement Rules (IDAPA 18.03.04)",
+        explanation:
+          "Idaho's replacement regulation defines what counts as a replacement, who's exempt, and imposes specific duties on both the producer and the replacing insurance company. A producer recommending replacement must give the client a notice regarding replacement and provide the information needed to compare the old and new policy's costs and benefits — since replacing a policy can mean losing accumulated cash value, restarting contestability and suicide-exclusion periods, or losing favorable provisions in the older contract. The replacing insurer also has its own duties, like verifying the disclosure was provided.",
+        examFocus:
+          "Replacement disclosure duties apply even when the new policy is from the SAME insurer — the trigger is replacing a policy, not switching companies. This regulation exists specifically to prevent twisting.",
+      },
+      {
+        title: "Annuity Best Interest / Suitability (41-1940A through 1940E)",
+        explanation:
+          "Idaho requires that any annuity recommendation be in the consumer's best interest, considering their financial situation, needs, and objectives at the time of the transaction. Producers must make a reasonable effort to obtain the consumer's profile information and consider factors like age, financial situation, tax status, liquidity needs, and risk tolerance before recommending an annuity — and must document that basis. Idaho updated this from a pure 'suitability' standard to the stricter 'best interest' standard effective 2021, and producers must also complete a one-time 4-hour annuity training course. This requirement is layered on top of the general annuity contract statutes (41-1917-1923, 1935).",
+        examFocus:
+          "Idaho's standard is BEST INTEREST (not just suitability) as of the 2021 update — the producer must document a reasonable basis tied to the specific consumer's profile, not just confirm the consumer wants the product. A one-time 4-hour annuity training course is also required.",
+      },
+      {
+        title: "Individual Life Standard Provisions",
+        explanation:
+          "Idaho law (41-1833, 1835-36, 1903-1913, 1918, 1930, 1935) sets standard provisions every individual life policy must include: a grace period for late premiums, defined policy loan and loan interest rate terms, a path to reinstatement after lapse, a free look period, and protection of named beneficiaries from the insured's creditors (so a death benefit generally can't be seized to pay the deceased's debts).",
+        examFocus:
+          "Beneficiary proceeds are generally protected from the insured's creditors under Idaho law — a frequently tested consumer-protection fact distinguishing life insurance proceeds from other estate assets.",
+      },
+      {
+        title: "The Life Settlements Act (41-1950 through 1965)",
+        explanation:
+          "A life settlement is the sale of an existing life insurance policy by the owner to a third party for a lump sum greater than the cash surrender value but less than the death benefit — the buyer becomes the new owner/beneficiary and continues paying premiums, collecting the death benefit when the insured dies. Idaho's Life Settlements Act regulates these transactions to protect consumers, including licensing requirements for life settlement providers and brokers and required disclosures to the policy owner about alternatives to settling.",
+        examFocus:
+          "A life settlement pays MORE than cash surrender value but LESS than the full death benefit — that gap is exactly why it's attractive to a policy owner who no longer wants or can afford the policy but doesn't want to walk away with nothing.",
+      },
+      {
+        title: "Group Life Standard Provisions and Conversion",
+        explanation:
+          "Idaho's group life statutes (41-2010-2020) set standard provisions for group policies and define eligible groups (41-2003-2008) who can be covered. The conversion privilege (41-2018) is a key consumer protection: when a person's group life coverage ends (such as leaving the employer), they generally have the right to convert to an individual policy without proving insurability, within a specified window after the group coverage ends.",
+        examFocus:
+          "Conversion rights let a departing group member buy individual coverage WITHOUT new medical underwriting — but only within a limited window after group coverage ends, and the converted policy is typically more expensive than the group rate.",
+      },
+    ],
+    examTraps: [
+      "Replacement disclosure duties apply even within the SAME insurer — the trigger is the act of replacing a policy.",
+      "Idaho's annuity standard is BEST INTEREST, not just suitability, since the 2021 update — and it requires a documented, individualized reasonable basis, not just that the consumer asked for the product.",
+      "A life settlement pays between the cash surrender value and the full death benefit — know that range, and that the buyer becomes the new policy owner.",
+      "Group life conversion rights apply without new underwriting, but only within a limited window after coverage ends — and the individual policy will cost more than the group rate.",
+    ],
+  },
+  {
+    slug: "lh-regulation-idaho-health",
+    track: "life-health",
+    title: "Idaho Insurance Law: Health-Specific Statutes",
+    summary:
+      "Idaho statutes specific to health/disability insurance — required coverages, disclosure, Medicare supplement, long-term care, and small employer/individual health availability acts.",
+    videoSearch: "Idaho health insurance law required coverages long term care explained",
+    concepts: [
+      {
+        title: "Required Coverages: Newborns, Maternity, and More",
+        explanation:
+          "Idaho law requires certain coverages be included in health policies issued in the state: coverage for newborns and adopted children from the moment of birth or placement (41-2140, 2210, 3932), maternity benefits (41-2140, 2210, 3438), coverage for handicapped dependents beyond the usual dependent age cutoff (41-2139), reconstructive surgery and prosthetic devices (IDAPA 18.04.08), and mammograms (41-2144, 2218, 3926). These required coverages can't be excluded or limited beyond what the statute allows, regardless of what an insurer might prefer to offer.",
+        examFocus:
+          "Newborn coverage attaches automatically from the moment of birth (or adoption placement) — a parent doesn't need to separately apply or wait for an open enrollment period to get the newborn covered.",
+      },
+      {
+        title: "Free Look, Contestability, and Grace Period for Health Policies",
+        explanation:
+          "Idaho health policies must include a free look period (41-2138) allowing a new policyholder to cancel for a full refund within a set window. The right of the insurer to contest a claim (time limit on certain defenses, 41-2106) parallels the life insurance incontestability clause — after a defined period, the insurer generally can't void the policy over application misstatements. A grace period (41-2107) gives the policyholder time to pay an overdue premium before the policy lapses. Pre-existing condition limitations are also tightly regulated across market segments (41-2221 for large groups, 41-4708 for small employers, 41-5208 for individual coverage) to prevent insurers from indefinitely excluding coverage for conditions a person had before enrolling.",
+        examFocus:
+          "Health insurance's 'time limit on certain defenses' (41-2106) is functionally the same concept as life insurance's incontestability clause — both cap how long an insurer can contest a policy over application misstatements.",
+      },
+      {
+        title: "Medicare Supplement and Long-Term Care Regulation",
+        explanation:
+          "Idaho regulates Medicare supplement (Medigap) policies under 41-4402, 4403, 4406-4408 and IDAPA 18.04.10, standardizing plan offerings so consumers can compare them. Long-term care insurance is separately regulated (41-4603, IDAPA 18.04.11), requiring specific disclosure statements (41-4605), defined Activities of Daily Living triggers, mandatory producer training before selling LTC products, and a suitability requirement similar in spirit to the annuity suitability rule.",
+        examFocus:
+          "Idaho specifically requires PRODUCER TRAINING before a producer can sell long-term care insurance — a distinct requirement beyond the general L&H pre-licensing education.",
+      },
+      {
+        title: "Small Employer and Individual Health Availability Acts",
+        explanation:
+          "The Small Employer Health Insurance Availability Act (Title 41, Chapter 47) sets special provisions, disclosure requirements, and fair marketing standards for coverage sold to small employers, and defines who qualifies as a small employer and an eligible employee. The Individual Health Insurance Availability Act (Title 41, Chapter 52) provides parallel protections in the individual market. The Idaho Health Carrier External Review Act (41-5901 through 5917) gives consumers the right to an independent external review when a health carrier denies a claim, after exhausting the carrier's internal appeal process.",
+        examFocus:
+          "External review (41-5901+) is a consumer's recourse AFTER exhausting the carrier's own internal appeal — it's an independent, outside review of a denied claim, not a first step.",
+      },
+    ],
+    examTraps: [
+      "Health insurance's 'time limit on certain defenses' (41-2106) plays the same role as life insurance's incontestability clause — don't treat them as unrelated concepts just because the name differs.",
+      "Long-term care insurance requires specific PRODUCER TRAINING in Idaho — a distinct, additional requirement beyond standard pre-licensing education.",
+      "Newborn and adopted-child coverage attaches automatically at birth/placement — it isn't something a parent has to apply for separately.",
+      "External review under the Health Carrier External Review Act comes AFTER the carrier's internal appeal process, not instead of it.",
     ],
   },
   {
     slug: "pc-property-basics",
     track: "property-casualty",
     title: "Property Insurance Basics",
+    free: true,
     summary: "Core property insurance concepts and the HO policy forms.",
     videoSearch: "homeowners insurance HO3 HO4 HO6 named perils open perils explained",
     concepts: [
@@ -371,6 +563,92 @@ export const modules: Module[] = [
     ],
   },
   {
+    slug: "lh-health-provisions",
+    track: "life-health",
+    title: "Health Policy Provisions & Renewability",
+    summary: "The mandatory and optional provisions every health policy contains, plus the renewability categories the exam tests.",
+    videoSearch: "health insurance policy provisions renewability clauses explained",
+    concepts: [
+      {
+        title: "Mandatory Provisions",
+        explanation:
+          "Health policies are required to include a defined set of mandatory provisions. The entire contract provision states that the policy, application, and any riders together make up the whole agreement. The time limit on certain defenses (incontestability) caps how long an insurer can contest the policy over application misstatements. Notice of claim and proof of loss set deadlines for the insured to report a claim and submit documentation. Time of payment of claims requires the insurer to pay promptly once proof of loss is received. Legal actions provisions set a minimum and maximum window for the insured to sue the insurer over a denied claim, and physical examination and autopsy provisions let the insurer verify a claim's validity.",
+        examFocus:
+          "Mandatory provisions exist in EVERY policy — distinguish them from optional provisions, which an insurer may or may not include. Notice of claim and proof of loss set the insured's deadlines; time of payment sets the insurer's deadline.",
+      },
+      {
+        title: "Optional Provisions and Riders",
+        explanation:
+          "Optional provisions give insurers flexibility in how they structure a policy. A probationary period is a window after the policy starts during which certain conditions (often sickness, as opposed to accidents) aren't yet covered. An elimination period is a waiting period between when a disability begins and when benefits start being paid — similar in concept to a deductible, but measured in time rather than dollars. Common riders include impairment/exclusion riders (excluding coverage for a specific pre-existing condition rather than declining the whole application) and a future increase option (guaranteeing the right to increase coverage later without new underwriting).",
+        examFocus:
+          "Elimination period = a TIME-based waiting period before disability benefits start (not a dollar deductible). Probationary period = a window when certain conditions aren't yet covered, common for sickness-only exclusions early in a policy.",
+      },
+      {
+        title: "Renewability Rights",
+        explanation:
+          "How long a health policy can be kept in force, and on what terms, depends on its renewability classification. A noncancelable policy can't be cancelled or have its premium increased by the insurer for the life of the policy, as long as premiums are paid — the strongest protection for the insured. A guaranteed renewable policy can't be cancelled by the insurer, but the insurer CAN raise premiums, typically for an entire class of policyholders rather than singling out one person. A cancelable policy gives the insurer the right to cancel coverage at any time, subject to advance notice.",
+        examFocus:
+          "Rank by insured protection: noncancelable (strongest — no cancellation, no individual rate increase) > guaranteed renewable (no cancellation, but rates CAN rise by class) > cancelable (weakest — insurer can cancel with notice).",
+      },
+      {
+        title: "Coordination with Pre-Existing Conditions and Benefit Limits",
+        explanation:
+          "Pre-existing condition clauses define how long an insurer can limit or exclude coverage for a condition the insured had before the policy began — these clauses are tightly regulated since they could otherwise be used to deny coverage indefinitely for chronic conditions. Lifetime, annual, or per-cause maximum benefit limits cap the total amount a policy will pay, and usual, reasonable, and customary (URC) charge provisions limit reimbursement to what's typical for a given service in a given area, protecting against inflated billing.",
+        examFocus:
+          "Pre-existing condition exclusions are time-LIMITED, not permanent — regulation prevents insurers from using them to deny coverage for a chronic condition forever.",
+      },
+    ],
+    examTraps: [
+      "Noncancelable is the strongest renewability protection (no cancellation, no individual rate hike); cancelable is the weakest (insurer can end coverage with notice) — guaranteed renewable sits in between.",
+      "An elimination period is a TIME-based waiting period before disability benefits begin — don't confuse it with a dollar-based deductible.",
+      "Mandatory provisions appear in every policy; optional provisions are the insurer's choice to include — know which bucket a given provision belongs to.",
+      "Pre-existing condition exclusions are time-limited by regulation, not permanent exclusions.",
+    ],
+  },
+  {
+    slug: "lh-specialty-health-underwriting",
+    track: "life-health",
+    title: "Specialty Health Policies, Field Underwriting & Other Concepts",
+    summary: "Disability income, AD&D, specialty health products, coordination of benefits, and the field underwriting process for health insurance.",
+    videoSearch: "disability income insurance specialty health policies field underwriting explained",
+    concepts: [
+      {
+        title: "Disability Income and Accidental Death & Dismemberment",
+        explanation:
+          "Disability income insurance replaces a portion of lost income when the insured can't work due to illness or injury — individual policies cover a person directly, while business overhead expense and disability buyout policies protect a business if an owner becomes disabled (covering ongoing business expenses or funding a buyout of the disabled owner's interest, respectively). Disability classifications matter: total disability means the insured can't perform their occupation at all, partial disability means a reduced capacity to work, recurrent disability is a relapse of a prior disability within a specified period (often treated as a continuation rather than a new claim), and residual disability pays a benefit proportional to actual income loss when the insured can work in a limited capacity. Accidental Death & Dismemberment (AD&D) pays a benefit for death or loss of a limb/eyesight specifically resulting from an accident, not illness.",
+        examFocus:
+          "Match disability type to its definition: total = can't do own job at all, partial = reduced capacity, recurrent = relapse within a window (often treated as the SAME claim), residual = benefit proportional to actual income lost. AD&D pays ONLY for accidental causes, never illness.",
+      },
+      {
+        title: "Specialty and Limited-Benefit Health Products",
+        explanation:
+          "Beyond major medical coverage, the exam tests several specialty and limited-benefit products. Dental and vision policies cover routine and major care for those specific areas. Cancer and critical illness (specified disease) policies pay a lump sum or scheduled benefit upon diagnosis of a covered condition, regardless of actual medical expenses incurred. Hospital indemnity policies pay a fixed daily or per-confinement amount for a hospital stay, again regardless of actual costs. Short-term medical provides temporary, limited-duration major medical-style coverage, often used as a gap-filler between other coverage. Worksite (employer-sponsored) policies are voluntary benefits offered through an employer but typically paid for by the employee.",
+        examFocus:
+          "Critical illness, cancer, and hospital indemnity policies pay FIXED or SCHEDULED amounts regardless of actual costs incurred — they're not reimbursement-based like major medical, which is a key distinguishing feature.",
+      },
+      {
+        title: "Coordination of Benefits and Subrogation",
+        explanation:
+          "When a person is covered by more than one health plan, coordination of benefits (COB) rules determine which plan pays first (primary) and which pays the remainder up to its own limit (secondary or excess) — preventing the insured from collecting more than their actual covered expenses. Subrogation in the health context lets an insurer recover what it paid from a third party responsible for the insured's injury (such as an at-fault driver in an auto accident) — similar in principle to property/casualty subrogation. Workers' compensation also factors into COB: if a work injury is covered by workers' comp, that coverage is typically primary over a group health plan for that specific injury.",
+        examFocus:
+          "Primary plan pays first, up to its limits; secondary/excess plan picks up some or all of the remainder — COB exists specifically to prevent the insured from being overpaid relative to actual expenses.",
+      },
+      {
+        title: "Field Underwriting Procedures",
+        explanation:
+          "Field underwriting is the work a producer does at the point of sale, before the application even reaches the insurer's underwriters. It includes properly completing the application, explaining sources of insurability information the insurer may use (such as a Medical Information Bureau report or a consumer report under the Fair Credit Reporting Act) and HIPAA privacy practices, collecting the initial premium and issuing a receipt (which can trigger conditional coverage pending formal underwriting, often contingent on a clean medical exam), and submitting the completed application and premium to the company. After issuance, the producer's field underwriting role continues through policy delivery — explaining the policy's provisions, riders, exclusions, and any rating to the client.",
+        examFocus:
+          "A conditional receipt issued at the point of sale can create temporary coverage pending formal underwriting — but it's typically conditioned on the applicant remaining insurable (e.g., passing a medical exam) at the level applied for.",
+      },
+    ],
+    examTraps: [
+      "Critical illness, cancer, and hospital indemnity policies pay fixed/scheduled benefits regardless of actual costs — don't treat them as reimbursement-based major medical substitutes.",
+      "AD&D pays only for ACCIDENTAL death/dismemberment, never illness — a frequently tested limitation.",
+      "Coordination of benefits prevents overpayment when multiple plans apply — primary pays first, secondary covers some/all of the remainder, not in addition without limit.",
+      "Recurrent disability is often treated as a continuation of the SAME prior claim if it relapses within a specified window, rather than triggering a brand-new elimination period.",
+    ],
+  },
+  {
     slug: "pc-commercial-liability",
     track: "property-casualty",
     title: "Commercial Property & General Liability",
@@ -462,46 +740,270 @@ export const modules: Module[] = [
     ],
   },
   {
-    slug: "pc-regulation",
+    slug: "pc-property-specialty-lines",
     track: "property-casualty",
-    title: "State Laws & Regulations (Property & Casualty)",
-    summary:
-      "Concepts common across most states' P&C exams. Exact numbers (CE hours, notice periods) vary by state — verify against your state's official rules.",
-    videoSearch: "property casualty insurance producer license laws explained",
+    title: "Commercial Property, Inland Marine & Specialty Lines",
+    summary: "Dwelling forms, commercial property, inland marine, and the specialty lines the exam tests outside basic homeowners.",
+    videoSearch: "dwelling policy DP forms inland marine NFIP explained insurance exam",
     concepts: [
       {
-        title: "Resident Licensing",
+        title: "Dwelling Policies (DP-1, DP-2, DP-3)",
         explanation:
-          "A resident producer license is for individuals who live in (and primarily transact insurance business in) their home state. To get licensed, a candidate must complete pre-licensing education for each specific line of authority they intend to sell — property, casualty, or both are separate lines requiring separate education and exams in most states — then pass the corresponding exam and apply through their state's insurance department, which conducts a background check before issuing the license. The pre-licensing hour requirements and fees vary by state, so confirm the exact numbers for your state.",
+          "Dwelling policies insure a dwelling that doesn't qualify for or doesn't need a homeowners policy — common for rental properties or homes that don't meet homeowner underwriting standards. DP-1 is the basic form, covering only a short list of named perils (fire, lightning, and a few others) on an actual cash value basis. DP-2 (broad form) expands the named perils list significantly and typically pays replacement cost on the dwelling. DP-3 (special form) covers the dwelling on an open-perils basis, mirroring how HO-3 treats the dwelling, while contents remain named-perils.",
         examFocus:
-          "Key fact: property and casualty are SEPARATE lines of authority, each requiring their own pre-licensing education and exam — selling both requires both licenses, in essentially every state.",
+          "Rank them by breadth: DP-1 (narrowest, ACV) < DP-2 (broader, named perils) < DP-3 (broadest, open-perils dwelling) — mirrors the HO-3 dwelling/contents split.",
       },
       {
-        title: "Twisting and Rebating",
+        title: "Commercial Property Forms",
         explanation:
-          "Nearly every state's insurance law prohibits two distinct unfair practices that sound similar but work differently. Twisting is inducing a policyholder to replace their existing policy through misrepresentation — lying about or distorting the comparison between the old and new policy to make the replacement look better than it is. Rebating is offering a client something of value not stated in the policy itself (like cash back or a gift) to induce them to buy — essentially, an under-the-table incentive to make a sale. Both are illegal nearly everywhere, but they target different moments: twisting targets the comparison/decision process, rebating targets the financial incentive to buy.",
+          "Commercial property coverage is typically built from a Commercial Package Policy (CPP), which combines a commercial property form with a causes-of-loss form (basic, broad, or special — controlling which perils are covered) and can add business income and extra expense coverage. Business income coverage replaces lost net income and continuing expenses during a shutdown from a covered loss; extra expense coverage pays the additional costs of speeding up the resumption of operations. Equipment breakdown coverage (formerly called boiler and machinery) covers mechanical or electrical breakdown of equipment, which is specifically excluded under standard property forms.",
         examFocus:
-          "Match the act to the keyword: REPLACE + lie = twisting. BUY + extra incentive = rebating. The exam often gives a short scenario and asks you to name the violation.",
+          "Business income = lost income/profit during shutdown. Extra expense = the EXTRA cost to keep operating or reopen faster. They're complementary, not duplicates, and equipment breakdown fills the gap standard property forms exclude.",
       },
       {
-        title: "Cancellation and Nonrenewal Notice Requirements",
+        title: "Builder's Risk and Cyber First-Party Coverage",
         explanation:
-          "Insurers generally can't simply drop a policyholder's coverage without warning — cancellation (ending a policy mid-term) and nonrenewal (declining to renew at the end of a term) both require advance written notice in every state, with specific minimum notice periods set by that state's law. This gives the policyholder time to shop for replacement coverage and avoid a gap in protection. The required notice period and process can differ for cancellation versus nonrenewal, and for different reasons (such as nonpayment versus underwriting decisions) — and the exact day counts differ by state.",
+          "Builder's risk insurance covers a structure while it's under construction, including materials on site — it's written for the construction period and typically converts to or is replaced by a standard property policy once the building is completed and occupied. Cyber first-party coverage is a newer specialty line that pays the policyholder's OWN costs from a cyber event: data restoration, business interruption from a system outage, ransomware payments, and notification costs — distinct from cyber liability, which pays third parties harmed by a breach of their data.",
         examFocus:
-          "Distinguish cancellation (mid-term) from nonrenewal (end-of-term) — both require advance WRITTEN notice, but the required lead time can differ and your state's exam will expect the specific number for your state.",
+          "Cyber FIRST-PARTY pays the insured's own costs (data recovery, downtime); cyber LIABILITY pays third parties whose data was exposed. Builder's risk runs only during construction, not after occupancy.",
       },
       {
-        title: "Errors & Omissions and Continuing Obligations",
+        title: "Inland Marine and the National Flood Insurance Program",
         explanation:
-          "Errors & omissions (E&O) coverage protects the PRODUCER (not the client) from claims that they made a professional mistake — giving bad advice, failing to procure coverage they promised, or making a paperwork error that caused a client financial harm. Beyond E&O awareness, licensed producers everywhere have ongoing administrative obligations: reporting changes of address or name to their state's insurance department, and reporting certain criminal convictions or administrative actions taken against them in other states, since failing to disclose these can itself be grounds for license action.",
+          "Inland marine covers property that moves or is in transit — personal articles floaters (jewelry, cameras, fine art) and commercial property floaters (contractor's equipment, goods in transit) are scheduled separately because standard property forms don't follow property away from a fixed location well. The National Flood Insurance Program (NFIP) is a federal program providing flood coverage that standard homeowners and commercial property policies specifically exclude — flood coverage must be purchased separately, either through NFIP or private flood insurance.",
         examFocus:
-          "E&O protects the PRODUCER, not the client — a frequently swapped detail. Also remember: failing to report a conviction/address change is itself a violation, in virtually every state.",
+          "Standard property policies EXCLUDE flood — it's a specifically separate purchase through NFIP or a private flood policy. Inland marine exists because property in transit/away from premises doesn't fit a standard fixed-location property form.",
+      },
+      {
+        title: "Earthquake, Mobile Homes, Farm/Ranch, and Windstorm",
+        explanation:
+          "Like flood, earthquake is typically excluded from standard property policies and must be added by endorsement or purchased as a separate policy, often with its own higher deductible expressed as a percentage of the dwelling's value. Mobile/manufactured homes use specialized forms (similar in structure to HO policies but adapted for the unique risks of manufactured housing, like tie-down requirements and transit exposure). Farm/ranch policies combine dwelling, personal property, farm structures, equipment, and livestock coverage that a standard homeowners policy doesn't contemplate. In coastal or wind-prone areas, windstorm coverage may also be carved out with its own separate deductible or policy, similar to earthquake.",
+        examFocus:
+          "Earthquake and windstorm both commonly use a PERCENTAGE deductible (e.g. 2-10% of dwelling value) rather than a flat dollar amount — a frequently tested distinction from standard peril deductibles.",
       },
     ],
     examTraps: [
-      "Resident vs. nonresident licensing requirements differ — a resident license is for producers who live and primarily transact business in their home state.",
-      "Nonrenewal notice requirements exist to protect the policyholder from being dropped without enough time to find new coverage — exam questions often test the minimum notice period concept, not always quizzing the policy itself.",
-      "Errors & omissions (E&O) coverage protects the PRODUCER from claims of professional negligence — don't confuse it with a client's own liability coverage.",
+      "Flood and earthquake are both standard exclusions on ordinary property policies — both require a separate policy or endorsement, and both commonly use percentage-based deductibles rather than flat dollar amounts.",
+      "Don't confuse cyber first-party (pays the insured's own recovery costs) with cyber liability (pays third parties) — exam scenarios often describe one and ask which coverage responds.",
+      "Builder's risk only covers the construction period — once the building is completed and occupied, it needs to convert to a standard property policy.",
+      "DP forms rank by breadth just like HO forms: DP-1 is narrowest (named perils, ACV), DP-3 is broadest (open-perils dwelling).",
+    ],
+  },
+  {
+    slug: "pc-property-provisions",
+    track: "property-casualty",
+    title: "Property Policy Provisions & Contract Law",
+    summary: "Declarations, conditions, exclusions, and the core terms that define how a property policy actually responds to a loss.",
+    videoSearch: "property insurance policy provisions declarations conditions exclusions explained",
+    concepts: [
+      {
+        title: "The Four Parts of Every Property Policy",
+        explanation:
+          "Every property policy is built from four standard parts. The declarations page lists the specific facts of the policy — who's insured, the property address, limits, deductibles, and the policy period. The insuring agreement is the insurer's core promise to pay for covered losses. Conditions are the rules both parties must follow for coverage to apply, like the duty to report a loss promptly or cooperate with an investigation. Exclusions list what's specifically NOT covered, even though it might otherwise fall under the insuring agreement.",
+        examFocus:
+          "Know where to look for each type of fact: limits/deductibles/who's-insured → declarations; the core promise to pay → insuring agreement; rules you must follow → conditions; carve-outs → exclusions.",
+      },
+      {
+        title: "Proximate Cause, Indemnity, and Limits of Liability",
+        explanation:
+          "Proximate cause is the dominant, efficient cause that sets a chain of events in motion leading to a loss — insurers trace back to the proximate cause to determine if a loss is covered, even if a covered peril and an excluded peril both contributed. Indemnity is the core principle that insurance should restore the insured to their financial position before the loss — no better, no worse — which is why insurers use actual cash value and replacement cost rather than just handing over a policy's face value. Limits of liability cap the maximum the insurer will pay, whether per occurrence, per item (special limits on categories like jewelry), or as an aggregate over the policy period.",
+        examFocus:
+          "Indemnity means restore, not enrich — a recurring theme behind loss valuation methods. Proximate cause questions usually describe a chain of events and ask which peril actually triggered coverage.",
+      },
+      {
+        title: "Occurrence, Vacancy, and Liability Types",
+        explanation:
+          "An occurrence is an event (or continuous/repeated exposure to conditions) causing a loss, and it's the trigger most property and liability policies use to define when coverage applies. Vacancy and unoccupancy provisions matter because insurers consider an empty building a higher risk (more prone to vandalism, undiscovered damage) — many policies limit or suspend certain coverages after a building sits vacant beyond a specified period, commonly 60 days. Liability comes in several flavors tested on this exam: absolute liability (responsible regardless of fault or care taken, rare and tied to inherently dangerous activities), strict liability (liable for harm caused by a product or activity without needing to prove negligence), and vicarious liability (liability imposed on one party for the acts of another, like an employer for an employee).",
+        examFocus:
+          "Vacancy provisions typically kick in around 60 days unoccupied — coverage doesn't vanish entirely but often narrows (e.g., vandalism/theft may be excluded while fire stays covered). Match liability type to its trigger: absolute = inherently dangerous activity, strict = product/activity without needing negligence, vicarious = responsible for ANOTHER's acts.",
+      },
+      {
+        title: "Subrogation, Other Insurance, and TRIA",
+        explanation:
+          "Subrogation is the insurer's right to recover what it paid out from a third party who actually caused the loss — after paying the insured's claim, the insurer can pursue the at-fault party (or their insurer) for reimbursement, and the insured generally can't waive this right after a loss without insurer consent. The other insurance provision addresses what happens when a loss is covered by more than one policy, typically prorating payment between insurers rather than allowing the insured to collect twice. The Terrorism Risk Insurance Act (TRIA) is a federal program requiring insurers to offer terrorism coverage and providing a federal backstop for the insurance industry against catastrophic terrorism losses.",
+        examFocus:
+          "Subrogation = insurer steps into the insured's shoes to collect from the at-fault party — it's why you shouldn't sign a release with an at-fault party before your insurer settles your claim. TRIA exists at the federal level specifically for terrorism risk, distinct from standard state-regulated coverage.",
+      },
+    ],
+    examTraps: [
+      "Subrogation rights belong to the INSURER after they pay a claim — an insured who releases the at-fault party from liability before the insurer settles can jeopardize their own claim.",
+      "Vacancy provisions narrow coverage after a set period (often 60 days) — they don't always cancel the policy outright, but they commonly suspend coverage for perils like vandalism or theft.",
+      "Absolute, strict, and vicarious liability are easy to mix up — absolute ties to inherently dangerous activity, strict applies without needing to prove negligence (often product liability), vicarious means liability for someone ELSE's act.",
+      "Indemnity is a restore-don't-enrich principle — it's the reasoning behind why insurers use ACV/replacement cost rather than paying a flat face amount regardless of actual loss.",
+    ],
+  },
+  {
+    slug: "pc-casualty-crime-professional",
+    track: "property-casualty",
+    title: "Crime Coverage & Professional Liability",
+    summary: "The specific crime sub-types and professional liability variants the exam tests beyond basic CGL.",
+    videoSearch: "crime insurance coverage employee dishonesty errors and omissions explained",
+    concepts: [
+      {
+        title: "Crime Coverage Sub-Types",
+        explanation:
+          "Crime coverage isn't one single thing — the exam tests several distinct sub-types. Employee dishonesty (sometimes called employee theft) covers losses from an employee's fraudulent or dishonest acts, like embezzlement. Theft is the broadest term for unlawfully taking property. Robbery specifically involves taking property from a person by force, threat, or violence. Burglary involves unlawful entry into a premises (typically requiring visible signs of forced entry) to steal property. Forgery and alteration covers losses from forged or altered financial instruments like checks. Mysterious disappearance covers property that vanishes without any explanation or evidence of how it was lost.",
+        examFocus:
+          "Distinguish by HOW the loss happens: robbery = force/threat against a PERSON, burglary = forced entry into a PREMISES, mysterious disappearance = no explanation at all, employee dishonesty = an inside job by your own staff.",
+      },
+      {
+        title: "Errors & Omissions and Medical Malpractice",
+        explanation:
+          "Errors & Omissions (E&O) coverage protects professionals against claims that their negligent act, error, or omission in performing professional services caused a client financial harm — it's the professional-services equivalent of CGL's bodily injury/property damage focus, but for financial/reputational harm from bad professional advice or service. Medical malpractice is essentially E&O for healthcare providers, covering claims of negligent diagnosis, treatment, or care that harms a patient.",
+        examFocus:
+          "E&O protects against financial harm from professional mistakes/advice, not bodily injury or property damage — that distinction (financial vs. physical harm) is the core difference from general liability.",
+      },
+      {
+        title: "Directors & Officers and Employment Practices Liability",
+        explanation:
+          "Directors and Officers (D&O) liability protects a company's directors and officers from claims related to their decisions made in managing the company — shareholders, regulators, or other parties alleging mismanagement, breach of fiduciary duty, or similar governance failures. Employment Practices Liability Insurance (EPLI) covers claims by employees against the employer for things like wrongful termination, discrimination, harassment, or retaliation — a distinct and increasingly significant liability exposure that standard CGL specifically excludes.",
+        examFocus:
+          "D&O protects decision-makers from claims about how they RAN the company; EPLI protects the employer from claims brought by its own EMPLOYEES over workplace treatment. Both are excluded under standard CGL — they require separate, specific policies.",
+      },
+      {
+        title: "Cyber Liability and Liquor Liability",
+        explanation:
+          "Cyber liability (the third-party counterpart to cyber first-party coverage) pays for claims by others harmed when the insured's data breach exposes their personal information — including legal defense, settlements, and regulatory fines. Liquor liability covers businesses that manufacture, sell, or serve alcohol against claims arising from an intoxicated person's actions — this is a standard CGL exclusion that must be added back by endorsement or a separate policy for any business in the business of serving or selling alcohol.",
+        examFocus:
+          "Liquor liability is a notable standard CGL EXCLUSION for businesses serving/selling alcohol — they need a specific endorsement or separate policy, a frequently tested 'what's NOT covered by a base CGL' fact.",
+      },
+    ],
+    examTraps: [
+      "Robbery requires force or threat against a PERSON; burglary requires forced entry into a PREMISES — exam scenarios will describe one and ask you to name it correctly.",
+      "E&O and medical malpractice cover FINANCIAL/professional harm from mistakes in service, not bodily injury from an accident — that's what separates them from general liability.",
+      "D&O and EPLI are both standard CGL exclusions requiring their own policy — D&O is about company governance decisions, EPLI is about employee workplace claims.",
+      "Liquor liability is excluded from standard CGL for any business serving/selling alcohol — don't assume a restaurant's CGL automatically covers an intoxication-related claim.",
+    ],
+  },
+  {
+    slug: "pc-casualty-provisions",
+    track: "property-casualty",
+    title: "Casualty Policy Provisions & Damages",
+    summary: "Declarations, exclusions, duties after a loss, and the damages terminology the exam tests on liability claims.",
+    videoSearch: "liability insurance policy provisions damages compensatory punitive explained",
+    concepts: [
+      {
+        title: "Declarations, Conditions, and Exclusions in Liability Policies",
+        explanation:
+          "Just like property policies, casualty/liability policies are built from declarations (who's insured, limits, policy period), an insuring agreement (the promise to pay for covered bodily injury or property damage the insured is legally liable for), conditions (duties like notifying the insurer promptly and cooperating with defense), and exclusions (carve-outs like intentional acts, which are excluded because insurance is meant to cover accidental, not deliberate, harm).",
+        examFocus:
+          "Intentional acts are a near-universal liability exclusion — insurance covers ACCIDENTAL harm the insured is liable for, not harm they intended to cause.",
+      },
+      {
+        title: "Duties of the Insured After a Loss",
+        explanation:
+          "Liability policies impose specific duties on the insured once a claim or potential claim arises: promptly notify the insurer, avoid voluntarily making payments or admitting liability without the insurer's consent, and cooperate with the insurer's investigation and defense. Violating these duties — like settling directly with a claimant without telling the insurer — can jeopardize coverage for that claim, since the insurer loses its ability to control and properly evaluate its own defense.",
+        examFocus:
+          "Never let an insured \"voluntarily assume liability\" or pay a claimant directly without the insurer's involvement — this is one of the most frequently tested duties-after-loss facts.",
+      },
+      {
+        title: "Loss Settlement, Consent to Settle, and Other Insurance",
+        explanation:
+          "Loss settlement provisions describe how a covered liability claim gets resolved — typically the insurer has the right (and duty) to defend and may settle a claim within policy limits, sometimes requiring the insured's consent to settle depending on the policy. The other insurance provision in liability policies, like in property, addresses how multiple applicable policies share a loss, usually through pro rata sharing or a primary/excess relationship rather than allowing a double recovery.",
+        examFocus:
+          "An insurer typically has both the right AND the duty to defend a covered liability claim — defense costs are usually paid in addition to, not subtracted from, the liability limit (verify this nuance against the specific policy form referenced).",
+      },
+      {
+        title: "Compensatory vs. Punitive Damages",
+        explanation:
+          "Damages awarded in a liability claim fall into two main categories. Compensatory damages reimburse the actual harm suffered — split into general damages (non-economic harm like pain and suffering, which has no precise dollar receipt) and special damages (economic harm with calculable amounts, like medical bills and lost wages). Punitive damages are different in purpose entirely: they're not meant to compensate the victim but to punish the wrongdoer for especially reckless or malicious conduct, and many states restrict or prohibit insurance from covering punitive damages as a matter of public policy.",
+        examFocus:
+          "General damages = non-economic (pain/suffering), special damages = economic/calculable (medical bills, lost wages) — both are compensatory. Punitive damages punish the wrongdoer and are often NOT insurable as a matter of public policy.",
+      },
+    ],
+    examTraps: [
+      "An insured who settles directly with a claimant or admits fault without the insurer's consent can lose coverage for that claim — duties after loss are heavily tested.",
+      "Intentional acts are excluded from liability coverage almost universally — insurance is for accidental liability, not deliberate harm.",
+      "General damages (non-economic, like pain/suffering) and special damages (economic, like medical bills) are both forms of COMPENSATORY damages — don't confuse either with punitive damages, which punish rather than compensate.",
+      "Punitive damages are frequently NOT insurable as a matter of public policy — a detail the exam likes to test against the assumption that 'liability insurance covers all damages.'",
+    ],
+  },
+  {
+    slug: "pc-regulation-idaho-general",
+    track: "property-casualty",
+    title: "Idaho Insurance Law: Licensing & Marketing Practices",
+    summary:
+      "Idaho Title 41 statutes common to every line — Director's authority, producer licensing, and unfair trade practices. Worth roughly 12 of the 138 scored questions on the Idaho P&C exam.",
+    videoSearch: "Idaho insurance producer license Title 41 explained",
+    concepts: [
+      {
+        title: "The Director of the Department of Insurance",
+        explanation:
+          "Idaho Code 41-203 makes the Director of the Department of Insurance the state official responsible for administering Idaho's insurance laws. The Director (or their examiners) can conduct examinations of insurers and producers (41-210, 219, 220), hold hearings and issue orders (41-212, 232, 235), and levy penalties for violations (41-117, 117A). The Director's authority is the backbone of every licensing and enforcement question on the Idaho-specific portion of the exam — almost every 'who has the power to...' question traces back to this office.",
+        examFocus:
+          "Memorize: the Director of the Department of Insurance holds examination, hearing, and penalty authority under Title 41. If a question asks who can suspend a license or order a hearing, the answer is the Director.",
+      },
+      {
+        title: "Who Must Be Licensed and How",
+        explanation:
+          "Under 41-1003(8) and 41-1004, anyone who sells, solicits, or negotiates insurance in Idaho must hold a producer license. Idaho distinguishes resident producers — who live in and primarily transact business in Idaho, per the definitions in 41-1003 — from nonresident producers (41-1009, 1010), who hold a home-state license and obtain an Idaho nonresident license through reciprocity. To obtain a license, an applicant must meet qualification requirements (41-1007), submit a license application (41-1006, 1007), and pass the written exam (41-1006) unless an exemption applies (41-1005, 1007(4), 1012). The Director can deny or refuse a license under 41-1011, 1016.",
+        examFocus:
+          "Property and casualty are separate lines of authority in Idaho — selling both requires passing both exams and holding both lines on one license. Resident vs. nonresident is about where the producer lives and primarily transacts business, not where they're selling a particular policy.",
+      },
+      {
+        title: "Maintaining a License: CE, Renewal, and Discipline",
+        explanation:
+          "Once licensed, an Idaho producer must complete continuing education (41-1013, IDAPA 18.06.04), keep their license current through renewal and fee payment (41-1008, IDAPA 18.01.02), keep accurate records (41-1036), and report any change of address or place of business (41-1008(6), 1009(3)). Licenses expire under 41-1013 if not renewed. The Director can suspend or revoke a license — including for a felony conviction — under 41-1016 and 41-1026. Producers also owe Idaho a fiduciary duty over premium funds they handle (41-1024, 1323, 1325, 1803) and must disclose and properly charge any fees beyond commission (41-1030).",
+        examFocus:
+          "A felony conviction is explicit grounds for suspension or revocation under 41-1016/1026 — this is a frequently tested 'which of these can cost you your license' fact. Producers must report changes of address; failing to do so is itself a violation.",
+      },
+      {
+        title: "Unfair Trade Practices (Twisting, Rebating, and More)",
+        explanation:
+          "Idaho Code 41-1303 through 41-1315 lists specific unfair methods of competition. Rebating (41-1314) is offering anything of value not stated in the policy to induce a sale. Misrepresentation and false advertising (41-1303, 1304) involve misleading statements about a policy or insurer. Twisting (41-1305) is inducing a policyholder to replace an existing policy through misrepresentation. Defamation (41-1308), false financial statements (41-1306), boycott/coercion/intimidation (41-1309), unfair discrimination (41-1313, 1315), coercion of a borrower (41-1310-1312), and fraud (41-290, 293) round out the list. Violating these provisions exposes a producer to penalties under 41-117, 1016, 1327, 1329A. Separately, 41-1328/1329/1839/3611 govern unfair claims practices by insurers.",
+        examFocus:
+          "Drill the keyword pairs: REPLACE + lie about it = twisting (41-1305). Anything of value not in the policy to induce a sale = rebating (41-1314). The exam frequently presents a one-sentence scenario and asks you to name the Idaho code violation.",
+      },
+    ],
+    examTraps: [
+      "Resident vs. nonresident licensing in Idaho hinges on where the producer lives and primarily transacts business (41-1003(9)), not where any single client is located.",
+      "Property and casualty are separate Idaho lines of authority (41-1003(8), 1004) — don't assume one exam covers both lines of authority automatically.",
+      "A felony conviction is named explicitly (41-1016, 1026) as grounds for license suspension/revocation — a frequently tested fact.",
+      "Twisting targets the REPLACEMENT decision (41-1305); rebating targets the PURCHASE incentive (41-1314) — these are commonly swapped on exam scenarios.",
+    ],
+  },
+  {
+    slug: "pc-regulation-idaho-pc",
+    track: "property-casualty",
+    title: "Idaho Insurance Law: Property & Casualty Specifics",
+    summary:
+      "Idaho statutes specific to property and casualty contracts — rate filings, the Guaranty Association, financial responsibility, and UM/UIM. Worth roughly 11 of the 138 scored questions.",
+    videoSearch: "Idaho property casualty insurance law financial responsibility explained",
+    concepts: [
+      {
+        title: "Insurance Contracts, Binders, and Countersignature",
+        explanation:
+          "Idaho Code 41-1823 governs binders — the temporary written or oral agreement that provides coverage while the formal policy is being prepared. Insurance contracts more broadly (renewal, nonrenewal, cancellation of commercial, homeowners, personal auto, and casualty policies) are addressed in 41-1806, 1811, 1814-15, 1817, 1828, 1831, 1841-43, and 1850. A countersignature requirement (41-337, 338, 1023) means certain policies must be signed by a licensed resident agent before they're valid in Idaho — a holdover protection ensuring a local licensed producer is involved in the transaction.",
+        examFocus:
+          "A binder (41-1823) provides IMMEDIATE temporary coverage before the policy is issued — know that it's enforceable even if oral, pending the actual policy.",
+      },
+      {
+        title: "Rate Filings and the Idaho P&C Guaranty Association",
+        explanation:
+          "Under 41-1401, 1402, and 1405, P&C insurers must file their rates with the Idaho Department of Insurance, and rates can't be excessive, inadequate, or unfairly discriminatory. Idaho's Insurance Guaranty Association Act (41-3603, 3606, 3607) protects P&C policyholders if their insurer becomes insolvent — the Guaranty Association steps in to pay covered claims up to statutory limits, funded by assessments on other licensed P&C insurers in the state. (Life and Health has its own separate guaranty fund under the Idaho Life and Health Insurance Guaranty Association Act, Title 41 Chapter 43.)",
+        examFocus:
+          "The Guaranty Association pays claims when an INSURER becomes insolvent — it does not protect against bad investment decisions, fraud by the policyholder, or claims above the statutory limit.",
+      },
+      {
+        title: "Property-Specific: Standard Fire Policy and Inland Marine",
+        explanation:
+          "Idaho's standard fire policy provisions (41-2401) set the baseline coverage form that Idaho fire insurance must follow at minimum. Marine and inland marine coverage in Idaho is referenced in 41-505 and 41-1401. The National Flood Insurance Program (NFIP) is addressed by Idaho Bulletin 07-1, reflecting that flood coverage is a federal program administered through participating private insurers rather than a typical state-regulated line.",
+        examFocus:
+          "Flood insurance (NFIP) is a FEDERAL program — Idaho doesn't regulate flood rates the way it regulates standard P&C rates. This federal/state distinction is a common trap.",
+      },
+      {
+        title: "Casualty-Specific: Financial Responsibility and UM/UIM",
+        explanation:
+          "Idaho's financial responsibility law (Title 49, Chapter 12, including 49-1212 and 49-1232) requires drivers to be able to demonstrate they can pay for damages they cause — almost always satisfied by carrying liability auto insurance, though Idaho also allows a bond or cash deposit as alternative methods. Uninsured/underinsured motorist coverage (41-2502, 2504) protects a driver when the at-fault party has no insurance or not enough. Idaho also has a mature driver discount provision (41-2515) for completing an accident prevention course, an assigned risk plan (41-1441, 2508(4)) for drivers who can't get coverage in the standard market, and follows comparative negligence (Idaho Code 6-802) rather than pure contributory negligence — meaning a partially at-fault claimant can still recover damages, reduced by their percentage of fault.",
+        examFocus:
+          "Idaho is a comparative negligence state (6-802) — a claimant who is partly at fault can still recover a reduced amount. This is different from a handful of states that bar any recovery if the claimant is even 1% at fault.",
+      },
+    ],
+    examTraps: [
+      "A binder (41-1823) creates coverage immediately, even before the full policy is issued — don't confuse it with an application, which creates no coverage by itself.",
+      "The Idaho P&C Guaranty Association protects against INSURER insolvency, not against denied claims from a solvent insurer.",
+      "NFIP flood coverage is federally administered — distinguish it from state-regulated standard fire and inland marine coverage.",
+      "Idaho follows comparative negligence (6-802): being partially at fault reduces, but does not eliminate, a claimant's recovery.",
     ],
   },
 ];

@@ -8,10 +8,9 @@ export default function ExamIndexPage() {
         Practice Exam
       </h1>
       <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-        A longer, full-length practice exam pulling questions from every topic
-        in a track. Most states require roughly 70% to pass — this practice
-        exam uses that bar. Confirm your exact state's passing score with
-        your official source.
+        50 questions pulled from every topic in a track, timed at the same
+        per-question pace as the real Idaho exam. Idaho requires 70% to pass
+        — this practice exam uses that bar.
       </p>
 
       <ul className="mt-8 flex flex-col gap-3">
@@ -24,7 +23,7 @@ export default function ExamIndexPage() {
               <span className="font-medium text-zinc-900 dark:text-zinc-50">
                 {trackLabel} Practice Exam
               </span>
-              <span className="text-sm text-zinc-500">30 questions, 70% to pass</span>
+              <span className="text-sm text-zinc-500">50 timed questions, 70% to pass</span>
             </Link>
           </li>
         ))}
